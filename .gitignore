@@ -4,6 +4,7 @@
 # Build directories
 build/
 
-# Configuration files
+# ESP-IDF files
+debug.log
 sdkconfig
 sdkconfig.old
