@@ -1,9 +1,7 @@
 #pragma once
 
-// C modules
-#include <stdio.h>
-
 // STL modules
+#include <cstdio>
 #include <string>
 #include <random>
 

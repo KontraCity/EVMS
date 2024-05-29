@@ -18,14 +18,14 @@ int Utility::RequestNumber(const char* comment)
 
     while (true)
     {
-        printf("%s ", comment);
+        std::printf("%s ", comment);
         std::string input;
 
         do
         {
-            char character = static_cast<char>(getchar());
+            char character = static_cast<char>(std::getchar());
             input += character;
-            printf("%c", character);
+            std::printf("%c", character);
         }
         while (input[input.size() - 1] != '\n');
 
