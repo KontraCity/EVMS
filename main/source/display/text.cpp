@@ -2,11 +2,11 @@
 
 namespace kc {
 
-constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterToMap(char character)
+constexpr Display::Font::TextCharacter::array Display::Font::TextCharacter::CharacterToMap(char character)
 {
     switch (character)
     {
-        case ' ':
+        case 0:
         {
             return {
                 std::bitset<8>(0b00000000),
@@ -27,608 +27,587 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
             };
         }
-        case '!':
+        case 1:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01000010),
+                std::bitset<8>(0b10000001),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b10100101),
+                std::bitset<8>(0b10011001),
+                std::bitset<8>(0b10000001),
+                std::bitset<8>(0b10011001),
+                std::bitset<8>(0b01000010),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 2:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b10011001),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 3:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 4:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
                 std::bitset<8>(0b00011000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-            };
-        }
-        case '"':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010010),
-                std::bitset<8>(0b00110110),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '#':
+        case 5:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b11111110),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b11111110),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01011010),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01011010),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '$':
+        case 6:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01011010),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 7:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 8:
+        {
+            return {
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b10000001),
+                std::bitset<8>(0b10000001),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+            };
+        }
+        case 9:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b10000001),
+                std::bitset<8>(0b10000001),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 10:
+        {
+            return {
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b10011001),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b10011001),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+            };
+        }
+        case 11:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00011101),
                 std::bitset<8>(0b00111000),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 12:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 13:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011101),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 14:
+        {
+            return {
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00110111),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b01100111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00001100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 15:
+        {
+            return {
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00010100),
-                std::bitset<8>(0b00010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-            };
-        }
-        case '%':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b10100100),
-                std::bitset<8>(0b10101000),
-                std::bitset<8>(0b10101000),
-                std::bitset<8>(0b10101000),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b00011010),
-                std::bitset<8>(0b00101010),
-                std::bitset<8>(0b00101010),
-                std::bitset<8>(0b00101010),
-                std::bitset<8>(0b01000100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00011000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '&':
+        case 16:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00110000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01010000),
-                std::bitset<8>(0b01101110),
-                std::bitset<8>(0b10100100),
-                std::bitset<8>(0b10010100),
-                std::bitset<8>(0b10001000),
-                std::bitset<8>(0b10001001),
-                std::bitset<8>(0b01110110),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '\'':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b11000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '(':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case ')':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '*':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b11010110),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b11010110),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '+':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b11111100),
                 std::bitset<8>(0b11111110),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11100000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case ',':
+        case 17:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00000111),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b11000000),
             };
         }
-        case '-':
+        case 18:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 19:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+            };
+        }
+        case 20:
+        {
+            return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b01111111),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11010111),
+                std::bitset<8>(0b11010111),
+                std::bitset<8>(0b11010111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00010111),
+                std::bitset<8>(0b00010111),
+                std::bitset<8>(0b00010111),
+                std::bitset<8>(0b00010111),
+                std::bitset<8>(0b00010111),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '.':
+        case 21:
         {
             return {
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '/':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000001),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '0':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '1':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b01110000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b11001110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01110011),
+                std::bitset<8>(0b00111011),
+                std::bitset<8>(0b00011110),
                 std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '2':
+        case 22:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '3':
+        case 23:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00000100),
                 std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 24:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '4':
+        case 25:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 26:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001000),
                 std::bitset<8>(0b00001100),
-                std::bitset<8>(0b00010100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01111110),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '5':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01111110),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01011000),
-                std::bitset<8>(0b01100100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '6':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01011000),
-                std::bitset<8>(0b01100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '7':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01111110),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '8':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '9':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100110),
-                std::bitset<8>(0b00011010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case ':':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case ';':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-            };
-        }
-        case '<':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '=':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b11111110),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
                 std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00001100),
+                std::bitset<8>(0b00001000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 27:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00110000),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00110000),
+                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 28:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
@@ -636,685 +615,223 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
             };
         }
-        case '>':
+        case 29:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b01000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-            };
-        }
-        case '?':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01100010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '@':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01011010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b10110100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'A':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00101000),
                 std::bitset<8>(0b00100100),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00100100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 30:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
                 std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'B':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01111000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b11111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'C':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111110),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'D':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b11111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'E':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01111000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'F':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01111000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b11100000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'G':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10000000),
-                std::bitset<8>(0b10001110),
-                std::bitset<8>(0b10000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'H':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
                 std::bitset<8>(0b01111110),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'I':
+        case 31:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 32:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 33:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
                 std::bitset<8>(0b01111100),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
                 std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'J':
+        case 34:
         {
             return {
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111110),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b10001000),
-                std::bitset<8>(0b11110000),
-            };
-        }
-        case 'K':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11101110),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01010000),
-                std::bitset<8>(0b01110000),
-                std::bitset<8>(0b01010000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01110111),
                 std::bitset<8>(0b11101110),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'L':
+        case 35:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 36:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
                 std::bitset<8>(0b11100000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000010),
                 std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00011000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'M':
+        case 37:
         {
             return {
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11101110),
-                std::bitset<8>(0b01101100),
-                std::bitset<8>(0b01101100),
-                std::bitset<8>(0b01101100),
-                std::bitset<8>(0b01101100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b01010100),
-                std::bitset<8>(0b11010110),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'N':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11000111),
-                std::bitset<8>(0b01100010),
-                std::bitset<8>(0b01100010),
-                std::bitset<8>(0b01010010),
-                std::bitset<8>(0b01010010),
-                std::bitset<8>(0b01001010),
-                std::bitset<8>(0b01001010),
-                std::bitset<8>(0b01001010),
-                std::bitset<8>(0b01000110),
-                std::bitset<8>(0b01000110),
+                std::bitset<8>(0b01000000),
                 std::bitset<8>(0b11100010),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'O':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'P':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01111100),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b11100000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'Q':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10000010),
-                std::bitset<8>(0b10110010),
-                std::bitset<8>(0b11001010),
-                std::bitset<8>(0b01001100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000110),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'R':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01111100),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11100011),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'S':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111110),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'T':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11111110),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'U':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
+                std::bitset<8>(0b11100110),
+                std::bitset<8>(0b01001110),
+                std::bitset<8>(0b00011110),
                 std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11100100),
+                std::bitset<8>(0b11001110),
+                std::bitset<8>(0b10001110),
+                std::bitset<8>(0b00000100),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'V':
+        case 38:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'W':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11010110),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b01101100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'X':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'Y':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b11111110),
                 std::bitset<8>(0b11101110),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01110111),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-            };
-        }
-        case 'Z':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01111110),
-                std::bitset<8>(0b10000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11111100),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '[':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '\\':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-            };
-        }
-        case ']':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01111000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b01111000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '^':
+        case 39:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00011100),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
@@ -1329,12 +846,1164 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
             };
         }
-        case '_':
+        case 40:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 41:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 42:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 43:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 44:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 45:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 46:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 47:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000010),
+                std::bitset<8>(0b00000110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11000000),
+                std::bitset<8>(0b10000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 48:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 49:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 50:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 51:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 52:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 53:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 54:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 55:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 56:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 57:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 58:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 59:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 60:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 61:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 62:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 63:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 64:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11001111),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011110),
+                std::bitset<8>(0b11000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 65:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 66:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 67:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 68:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 69:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 70:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 71:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100011),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 72:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 73:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 74:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 75:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 76:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 77:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 78:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 79:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 80:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 81:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 82:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 83:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 84:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 85:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 86:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 87:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 88:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 89:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 90:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 91:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 92:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b10000000),
+                std::bitset<8>(0b11000000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000110),
+                std::bitset<8>(0b00000010),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 93:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 94:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 95:
+        {
+            return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
@@ -1348,282 +2017,1839 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b11111111),
-            };
-        }
-        case '`':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'a':
+        case 96:
         {
             return {
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00111111),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'b':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01011000),
-                std::bitset<8>(0b01100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01100100),
-                std::bitset<8>(0b01011000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'c':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011100),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00100010),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
                 std::bitset<8>(0b00011100),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-            };
-        }
-        case 'd':
-        {
-            return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000110),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100110),
-                std::bitset<8>(0b00011011),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'e':
+        case 97:
         {
             return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01111110),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'f':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00001111),
-                std::bitset<8>(0b00010001),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b01111110),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b01111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'g':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00111110),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00111000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'h':
+        case 98:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 99:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01011100),
-                std::bitset<8>(0b01100010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 100:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 101:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 102:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b01110011),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 103:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 104:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
                 std::bitset<8>(0b11100111),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'i':
+        case 105:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00110000),
-                std::bitset<8>(0b00110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01110000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 106:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111110),
                 std::bitset<8>(0b01111100),
                 std::bitset<8>(0b00000000),
+            };
+        }
+        case 107:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'j':
+        case 108:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 109:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00001100),
-                std::bitset<8>(0b00001100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 110:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 111:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 112:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 113:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 114:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 115:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 116:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 117:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 118:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 119:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 120:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 121:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 122:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 123:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 124:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 125:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 126:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 127:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 128:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111100),
+            };
+        }
+        case 129:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 130:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 131:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 132:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 133:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 134:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 135:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111100),
+            };
+        }
+        case 136:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 137:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 138:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 139:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 140:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 141:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 142:
+        {
+            return {
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 143:
+        {
+            return {
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 144:
+        {
+            return {
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 145:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111011),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 146:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01101100),
+                std::bitset<8>(0b01101111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11101100),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 147:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 148:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 149:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 150:
+        {
+            return {
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 151:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 152:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 153:
+        {
+            return {
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 154:
+        {
+            return {
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 155:
+        {
+            return {
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00011100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'k':
+        case 156:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b01110011),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b01110001),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 157:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 158:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100010),
+                std::bitset<8>(0b11100110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b00000110),
+                std::bitset<8>(0b00000110),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000011),
+            };
+        }
+        case 159:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00111011),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b10111000),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 160:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 161:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 162:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 163:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 164:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 165:
+        {
+            return {
+                std::bitset<8>(0b01110110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 166:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 167:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 168:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 169:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b01001110),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01010000),
-                std::bitset<8>(0b01101000),
-                std::bitset<8>(0b01001000),
-                std::bitset<8>(0b01000100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 170:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 171:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11110001),
+                std::bitset<8>(0b01110011),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b10000110),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 172:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11110001),
+                std::bitset<8>(0b01110011),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11010111),
+                std::bitset<8>(0b10111111),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 173:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 174:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 175:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b00111011),
+                std::bitset<8>(0b01110111),
                 std::bitset<8>(0b11101110),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'l':
+        case 176:
         {
             return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
+                std::bitset<8>(0b10000010),
                 std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b01111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
             };
         }
-        case 'm':
+        case 177:
+        {
+            return {
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+                std::bitset<8>(0b10010010),
+                std::bitset<8>(0b01001001),
+            };
+        }
+        case 178:
+        {
+            return {
+                std::bitset<8>(0b11011000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b00011011),
+                std::bitset<8>(0b11011000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b00011011),
+                std::bitset<8>(0b11011000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b00011011),
+                std::bitset<8>(0b11011000),
+                std::bitset<8>(0b11000011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b00011011),
+            };
+        }
+        case 179:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 180:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 181:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 182:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 183:
         {
             return {
                 std::bitset<8>(0b00000000),
@@ -1634,122 +3860,17 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b11111110),
-                std::bitset<8>(0b01001001),
-                std::bitset<8>(0b01001001),
-                std::bitset<8>(0b01001001),
-                std::bitset<8>(0b01001001),
-                std::bitset<8>(0b01001001),
-                std::bitset<8>(0b11101101),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'n':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11011100),
-                std::bitset<8>(0b01100010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'o':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'p':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11011000),
-                std::bitset<8>(0b01100100),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01111000),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b11100000),
-            };
-        }
-        case 'q':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b00011110),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b00000111),
-            };
-        }
-        case 'r':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b11101110),
-                std::bitset<8>(0b00110010),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b00100000),
-                std::bitset<8>(0b11111000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
             };
         }
-        case 's':
+        case 184:
         {
             return {
                 std::bitset<8>(0b00000000),
@@ -1757,239 +3878,1436 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 185:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 186:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 187:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 188:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 189:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 190:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 191:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 192:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 193:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 194:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 195:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 196:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 197:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 198:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 199:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 200:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 201:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 202:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 203:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 204:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 205:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 206:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 207:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 208:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 209:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 210:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 211:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 212:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 213:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 214:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 215:
+        {
+            return {
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+            };
+        }
+        case 216:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 217:
+        {
+            return {
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b11111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 218:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011111),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00011100),
+            };
+        }
+        case 219:
+        {
+            return {
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+            };
+        }
+        case 220:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+            };
+        }
+        case 221:
+        {
+            return {
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+                std::bitset<8>(0b11110000),
+            };
+        }
+        case 222:
+        {
+            return {
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+            };
+        }
+        case 223:
+        {
+            return {
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 224:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01110011),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 225:
+        {
+            return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00111110),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000000),
-                std::bitset<8>(0b00111100),
-                std::bitset<8>(0b00000010),
-                std::bitset<8>(0b01000010),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100110),
+                std::bitset<8>(0b11101100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 226:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 227:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000011),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11110110),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01110111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 228:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 229:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11101100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111110),
                 std::bitset<8>(0b01111100),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-            };
-        }
-        case 't':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b01111100),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001100),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'u':
+        case 230:
         {
             return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11000110),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000110),
-                std::bitset<8>(0b00111011),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case 'v':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b11100111),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'w':
+        case 231:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01101111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b10111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11010111),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b10010010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b10101010),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b01000100),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case 'x':
+        case 232:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 233:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 234:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b01100110),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 235:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b01111111),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 236:
+        {
+            return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b01101110),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00100100),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11011011),
+                std::bitset<8>(0b11111111),
                 std::bitset<8>(0b01110110),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'y':
+        case 237:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000001),
+                std::bitset<8>(0b00000011),
+                std::bitset<8>(0b00000110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11101111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11110111),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01100000),
+                std::bitset<8>(0b11000000),
+                std::bitset<8>(0b10000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+            };
+        }
+        case 238:
+        {
+            return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
-                std::bitset<8>(0b11100111),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00100100),
-                std::bitset<8>(0b00101000),
-                std::bitset<8>(0b00011000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b01111110),
                 std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b11100000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
             };
         }
-        case 'z':
+        case 239:
         {
             return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b01111110),
-                std::bitset<8>(0b01000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00100010),
-                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b11100111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
         }
-        case '{':
+        case 240:
         {
             return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 241:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 242:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 243:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00001110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b11111111),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 244:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00111111),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+            };
+        }
+        case 245:
+        {
+            return {
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b01110000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 246:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 247:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01110110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 248:
+        {
+            return {
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 249:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00111100),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 250:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00011000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 251:
+        {
+            return {
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000011),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000100),
-                std::bitset<8>(0b00000011),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '|':
-        {
-            return {
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00001000),
-            };
-        }
-        case '}':
-        {
-            return {
-                std::bitset<8>(0b00000000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00001000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b00010000),
-                std::bitset<8>(0b01100000),
-                std::bitset<8>(0b00000000),
-            };
-        }
-        case '~':
-        {
-            return {
+                std::bitset<8>(0b00000111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00001111),
+                std::bitset<8>(0b00011110),
+                std::bitset<8>(0b10011100),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b11111000),
+                std::bitset<8>(0b01111000),
                 std::bitset<8>(0b00110000),
-                std::bitset<8>(0b01001100),
-                std::bitset<8>(0b01000011),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+            };
+        }
+        case 252:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b11011100),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b11101110),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
@@ -2001,23 +5319,65 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
                 std::bitset<8>(0b00000000),
             };
         }
-        default:
+        case 253:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b01111100),
+                std::bitset<8>(0b11101110),
+                std::bitset<8>(0b00011100),
+                std::bitset<8>(0b00111000),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b11111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 254:
         {
             return {
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b01111110),
                 std::bitset<8>(0b01111110),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
-                std::bitset<8>(0b01000010),
                 std::bitset<8>(0b01111110),
                 std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b01111110),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+            };
+        }
+        case 255:
+        {
+            return {
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
+                std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
                 std::bitset<8>(0b00000000),
             };
@@ -2026,10 +5386,10 @@ constexpr Display::StaticBitMap<8, 16> Display::Font::TextCharacter::CharacterTo
 }
 
 Display::Font::TextCharacter::TextCharacter(char character)
-    : StaticBitMap<8, 16>(CharacterToMap(character))
+    : array(CharacterToMap(character))
 {}
 
-constexpr Display::StaticBitMap<25, 35> Display::Font::ValueCharacter::CharacterToMap(char character)
+constexpr Display::Font::ValueCharacter::array Display::Font::ValueCharacter::CharacterToMap(char character)
 {
     switch (character)
     {
@@ -2594,7 +5954,7 @@ constexpr Display::StaticBitMap<25, 35> Display::Font::ValueCharacter::Character
 }
 
 Display::Font::ValueCharacter::ValueCharacter(char character)
-    : StaticBitMap<25, 35>(CharacterToMap(character))
+    : array(CharacterToMap(character))
 {}
 
 } // namespace kc

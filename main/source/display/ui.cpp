@@ -45,7 +45,8 @@ Display::Ui::Ui(int sclPin, int sdaPin)
 void Display::Ui::start()
 {
     print<Font::TextCharacter>(0, 0, "Temperature  1/1");
-    draw(0, 25, CelciusDegreesIcon);
+    print<Font::TextCharacter>(0, 16, "CEL");
+    print<Font::TextCharacter>(0, 32, "DEG");
     render();
 
     float value = 0;

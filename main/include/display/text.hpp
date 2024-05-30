@@ -19,7 +19,7 @@ namespace Display
             /// @brief Convert character to pixel map
             /// @param character The character to convert
             /// @return Converted character
-            static constexpr StaticBitMap<8, 16> CharacterToMap(char character);
+            static constexpr array CharacterToMap(char character);
 
         public:
             /// @brief Create text character
@@ -37,7 +37,7 @@ namespace Display
             /// @brief Convert character to pixel map
             /// @param character The character to convert
             /// @return Converted character
-            static constexpr StaticBitMap<25, 35> CharacterToMap(char character);
+            static constexpr array CharacterToMap(char character);
 
         public:
             /// @brief Create value character
