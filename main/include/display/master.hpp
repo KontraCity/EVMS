@@ -105,10 +105,11 @@ namespace Display
         void clear(int x = 0, int y = 0, int width = MasterConst::Dimensions::Pixels::Width, int height = MasterConst::Dimensions::Pixels::Height);
 
         /// @brief Draw pixel map on frame
-        /// @param x X coordinate of map's top left corner
-        /// @param y Y coordinate of map's top left corner
+        /// @param x X coordinate of map's top left or top right corner
+        /// @param y Y coordinate of map's top left or top right corner
         /// @param map The map to draw
-        void draw(int x, int y, const BitMap& map);
+        /// @param topRightCorner Whether or not the coordinates are of top right corner instead of top left
+        void draw(int x, int y, const BitMap& map, bool topRightCorner = false);
 
         /// @brief Draw static map on frame
         /// @tparam Static map type
@@ -130,7 +131,7 @@ namespace Display
         /// @param x X coordinate of map's top left or top right corner
         /// @param y Y coordinate of map's top left or top right corner
         /// @param text The text to print
-        /// @param topRightCorner Whether or not coordinates are of top right corner instead of top left
+        /// @param topRightCorner Whether or not the coordinates are of top right corner instead of top left
         template <typename Type>
         void print(int x, int y, const char* text, bool topRightCorner = false)
         {

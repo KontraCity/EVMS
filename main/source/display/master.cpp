@@ -72,7 +72,7 @@ void Display::Master::clear(int x, int y, int width, int height)
     draw(x, y, map);
 }
 
-void Display::Master::draw(int x, int y, const BitMap& map)
+void Display::Master::draw(int x, int y, const BitMap& map, bool topRightCorner)
 {
     if (map.empty())
     {
@@ -104,6 +104,9 @@ void Display::Master::draw(int x, int y, const BitMap& map)
         Utility::Sleep(0.01);
         return;
     }
+
+    if (topRightCorner)
+        x -= map[0].size();
 
     if (x + width <= 0 || x >= Dimensions::Pixels::Width || y + height <= 0 || y >= Dimensions::Pixels::Height)
     {

@@ -11,11 +11,15 @@ namespace Display
     {
         class TextCharacter : public StaticBitMap<8, 16>
         {
+        public:
+            static constexpr int Width = value_type().size();
+            static constexpr int Height = std::tuple_size<array>::value;
+
         private:
             /// @brief Convert character to pixel map
             /// @param character The character to convert
             /// @return Converted character
-            static StaticBitMap<8, 16> CharacterToMap(char character);
+            static constexpr StaticBitMap<8, 16> CharacterToMap(char character);
 
         public:
             /// @brief Create text character
@@ -25,11 +29,15 @@ namespace Display
 
         class ValueCharacter : public StaticBitMap<25, 35>
         {
+        public:
+            static constexpr int Width = value_type().size();
+            static constexpr int Height = std::tuple_size<array>::value;
+
         private:
             /// @brief Convert character to pixel map
             /// @param character The character to convert
             /// @return Converted character
-            static StaticBitMap<25, 35> CharacterToMap(char character);
+            static constexpr StaticBitMap<25, 35> CharacterToMap(char character);
 
         public:
             /// @brief Create value character
