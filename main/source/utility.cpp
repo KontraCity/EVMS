@@ -2,7 +2,7 @@
 
 namespace kc {
 
-int Utility::RequestNumber(const char* comment)
+std::string Utility::RequestString(const char* comment)
 {
     static bool initialized = false;
     if (!initialized)
@@ -18,19 +18,40 @@ int Utility::RequestNumber(const char* comment)
 
     while (true)
     {
-        std::printf("%s ", comment);
+        if (std::strlen(comment) != 0)
+            std::printf("%s ", comment);
         std::string input;
 
-        do
+        while (true)
         {
             char character = static_cast<char>(std::getchar());
-            input += character;
             std::printf("%c", character);
-        }
-        while (input[input.size() - 1] != '\n');
 
-        int result, converted = std::sscanf(input.c_str(), "%i", &result);
-        if (converted == 1)
+            if (character == '\n')
+                return input;
+            input += character;
+        }
+    }
+}
+
+int Utility::RequestInteger(const char* comment)
+{
+    int result;
+    while (true)
+    {
+        std::string input = RequestString(comment);
+        if (std::sscanf(input.c_str(), "%i", &result) == 1)
+            return result;
+    }
+}
+
+float Utility::RequestFloat(const char* comment)
+{
+    float result;
+    while (true)
+    {
+        std::string input = RequestString(comment);
+        if (std::sscanf(input.c_str(), "%f", &result) == 1)
             return result;
     }
 }
@@ -39,6 +60,15 @@ int Utility::RandomNumber(int min, int max)
 {
     static std::mt19937 generator(esp_random());
     return std::uniform_int_distribution(min, max)(generator);
+}
+
+float Utility::Constraint(float value, float min, float max)
+{
+    if (value < min)
+        value = min;
+    else if (value > max)
+        value = max;
+    return value;
 }
 
 void Utility::Sleep(double seconds)

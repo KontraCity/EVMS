@@ -26,6 +26,7 @@ namespace kc {
 // Custom modules
 #include "display/text.hpp"
 #include "i2c.hpp"
+#include "utility.hpp"
 
 namespace kc {
 
@@ -104,16 +105,56 @@ namespace Display
         void clear(int x = 0, int y = 0, int width = MasterConst::Dimensions::Pixels::Width, int height = MasterConst::Dimensions::Pixels::Height);
 
         /// @brief Draw pixel map on frame
-        /// @param x X coordinate of top left corner
-        /// @param y Y coordinate of top left corner
+        /// @param x X coordinate of map's top left corner
+        /// @param y Y coordinate of map's top left corner
         /// @param map The map to draw
         void draw(int x, int y, const BitMap& map);
 
+        /// @brief Draw static map on frame
+        /// @tparam Static map type
+        /// @param x X coordinate of map's top left corner
+        /// @param y Y coordinate of map's top left corner
+        /// @param map The map to draw
+        template <typename Type>
+        void draw(int x, int y, const Type& map)
+        {
+            BitMap bitMap(map.size(), std::vector<bool>(map[0].size()));
+            for (int y = 0, height = map.size(); y < height; ++y)
+                for (int x = 0, width = map[0].size(); x < width; ++x)
+                    bitMap[y][x] = map[y][width - x];
+            draw(x, y, bitMap);
+        }
+
         /// @brief Print text on frame
-        /// @param x X coordinate of top left corner
-        /// @param y Y coordinate of top left corner
+        /// @tparam Text font type
+        /// @param x X coordinate of map's top left or top right corner
+        /// @param y Y coordinate of map's top left or top right corner
         /// @param text The text to print
-        void print(int x, int y, const char* text);
+        /// @param topRightCorner Whether or not coordinates are of top right corner instead of top left
+        template <typename Type>
+        void print(int x, int y, const char* text, bool topRightCorner = false)
+        {
+            int length = std::strlen(text);
+            if (length == 0)
+                return;
+
+            if (!topRightCorner)
+            {
+                for (int index = 0; index < length; ++index)
+                {
+                    Type map(text[index]);
+                    draw(x + index * map[0].size(), y, map);
+                }
+            }
+            else
+            {
+                for (int index = length - 1; index >= 0; --index)
+                {
+                    Type map(text[index]);
+                    draw(x - (length - index) * map[0].size(), y, map);
+                }
+            }
+        }
 
         /// @brief Render crafted frame on the display
         void render();

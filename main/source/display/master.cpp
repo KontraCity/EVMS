@@ -77,6 +77,7 @@ void Display::Master::draw(int x, int y, const BitMap& map)
     if (map.empty())
     {
         ESP_LOGE(LogTag, "Draw: Map is empty [x=%i, y=%i]", x, y);
+        Utility::Sleep(0.01);
         return;
     }
 
@@ -89,6 +90,7 @@ void Display::Master::draw(int x, int y, const BitMap& map)
                 LogTag, "Draw: Map width is not constant [x=%i, y=%i, size=%ix%i]",
                 x, y, width, height
             );
+            Utility::Sleep(0.01);
             return;
         }
     }
@@ -99,12 +101,14 @@ void Display::Master::draw(int x, int y, const BitMap& map)
             LogTag, "Draw: Map width is 0 [x=%i, y=%i, size=%ix%i]",
             x, y, width, height
         );
+        Utility::Sleep(0.01);
         return;
     }
 
     if (x + width <= 0 || x >= Dimensions::Pixels::Width || y + height <= 0 || y >= Dimensions::Pixels::Height)
     {
         /* Nothing to draw, map is out of bounds */
+        Utility::Sleep(0.01);
         return;
     }
 
@@ -134,19 +138,6 @@ void Display::Master::draw(int x, int y, const BitMap& map)
             uint8_t& frameByte = m_frameMap[x + pixelX - widthStart][y / 8 + byte];
             frameByte = (frameByte & ~(1 << bit)) | (map[pixelY][pixelX] << bit);
         }
-    }
-}
-
-void Display::Master::print(int x, int y, const char* text)
-{
-    for (int index = 0, length = std::strlen(text); index < length; ++index)
-    {
-        Font::CharacterMap characterMap = Font::GetCharacterMap(text[index]);
-        BitMap bitMap(characterMap.size(), std::vector<bool>(characterMap[0].size()));
-        for (int y = 0, height = characterMap.size(); y < height; ++y)
-            for (int x = 0, width = characterMap[0].size(); x < width; ++x)
-                bitMap[y][x] = characterMap[y][width - x];
-        draw(x + index * characterMap[0].size(), y, bitMap);
     }
 }
 
@@ -180,6 +171,7 @@ void Display::Master::render()
     if (rightCrop == -1)
     {
         /* The frame and display contain the same data, no need to render */
+        Utility::Sleep(0.01);
         return;
     }
 

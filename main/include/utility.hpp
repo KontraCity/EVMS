@@ -2,6 +2,7 @@
 
 // STL modules
 #include <cstdio>
+#include <cstring>
 #include <string>
 #include <random>
 
@@ -26,10 +27,24 @@ namespace kc {
 
 namespace Utility
 {
-    /// @brief Request a number from serial port
+    /// @brief Delay execution for some time
+    /// @param seconds Amount of seconds to delay for
+    void Sleep(double seconds);
+
+    /// @brief Request a string from serial port
     /// @param comment Request comment
-    /// @return Received number
-    int RequestNumber(const char* comment);
+    /// @return Received string
+    std::string RequestString(const char* comment = "");
+
+    /// @brief Request an integer from serial port
+    /// @param comment Request comment
+    /// @return Received integer
+    int RequestInteger(const char* comment = "");
+
+    /// @brief Request a float from serial port
+    /// @param comment Request comment
+    /// @return Received float
+    float RequestFloat(const char* comment = "");
 
     /// @brief Generate random number
     /// @param min Min number value
@@ -37,9 +52,12 @@ namespace Utility
     /// @return Generated number
     int RandomNumber(int min, int max);
 
-    /// @brief Delay execution for some time
-    /// @param seconds Amount of seconds to delay for
-    void Sleep(double seconds);
+    /// @brief Constraint a value
+    /// @param value The value to constraint
+    /// @param min Minimum constraint limit
+    /// @param max Maximum constraint limit
+    /// @return Constrainted value
+    float Constraint(float value, float min, float max);
 }
 
 } // namespace kc

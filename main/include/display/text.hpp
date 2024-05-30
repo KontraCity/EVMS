@@ -9,13 +9,33 @@ namespace Display
 {
     namespace Font
     {
-        // Static character pixel map
-        using CharacterMap = StaticBitMap<8, 16>;
+        class TextCharacter : public StaticBitMap<8, 16>
+        {
+        private:
+            /// @brief Convert character to pixel map
+            /// @param character The character to convert
+            /// @return Converted character
+            static StaticBitMap<8, 16> CharacterToMap(char character);
 
-        /// @brief Get character's pixel map
-        /// @param character Character to get the map for
-        /// @return Character's pixel map
-        CharacterMap GetCharacterMap(char character);
+        public:
+            /// @brief Create text character
+            /// @param character The character to create
+            TextCharacter(char character);
+        };
+
+        class ValueCharacter : public StaticBitMap<25, 35>
+        {
+        private:
+            /// @brief Convert character to pixel map
+            /// @param character The character to convert
+            /// @return Converted character
+            static StaticBitMap<25, 35> CharacterToMap(char character);
+
+        public:
+            /// @brief Create value character
+            /// @param character The character to create
+            ValueCharacter(char character);
+        };
     }
 }
 
