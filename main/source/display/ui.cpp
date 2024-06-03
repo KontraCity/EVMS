@@ -40,14 +40,19 @@ Display::BitMap Display::Ui::SlidingValueWidget(float value)
 
 Display::Ui::Ui(int sclPin, int sdaPin)
     : Master(sclPin, sdaPin)
-{}
+{
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stdout, NULL, _IONBF, 0);
+    ESP_ERROR_CHECK(uart_driver_install(CONFIG_ESP_CONSOLE_UART_NUM, 256, 0, 0, NULL, 0));
+    esp_vfs_dev_uart_use_driver(CONFIG_ESP_CONSOLE_UART_NUM);
+    esp_vfs_dev_uart_port_set_rx_line_endings(CONFIG_ESP_CONSOLE_UART_NUM, ESP_LINE_ENDINGS_CR);
+    esp_vfs_dev_uart_port_set_tx_line_endings(CONFIG_ESP_CONSOLE_UART_NUM, ESP_LINE_ENDINGS_CRLF);
+}
 
 void Display::Ui::start()
 {
-    print<Font::TextCharacter>(0, 0, "Temperature  1/1");
-    print<Font::TextCharacter>(0, 16, "DEG");
-    print<Font::TextCharacter>(0, 32, "CEL");
-    render();
+    print<Font::TextCharacter>(0, 0, "Oil temp     1/1");
+    print<Font::TextCharacter>(0, 16, "\370C");
 
     float value = 0;
     while (true)
@@ -55,7 +60,11 @@ void Display::Ui::start()
         clear(24, 16, 128 - 24, 64 - 16);
         draw(127, 22, SlidingValueWidget(value), true);
         render();
-        value = Utility::Constraint(Utility::RequestFloat(), 0, 9999);
+        
+        int32_t buffer = 0;
+        for (int offset = 8 * (sizeof(buffer) - 1); offset >= 0; offset -= 8)
+            buffer |= std::getchar() << offset;
+        value = *reinterpret_cast<float*>(&buffer);
     }
 }
 

@@ -4,6 +4,15 @@
 #include <cmath>
 #include <cstdio>
 
+// ESP modules
+#include "esp_system.h"
+#include "esp_console.h"
+#include "esp_vfs_dev.h"
+#include "esp_vfs_fat.h"
+
+// Drivers
+#include "driver/uart.h"
+
 // Custom modules
 #include "display/master.hpp"
 
