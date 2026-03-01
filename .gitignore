@@ -1,0 +1,10 @@
+# Visual Studio Code files
+.vscode/
+
+# Build directories
+build/
+
+# ESP-IDF files
+debug.log
+sdkconfig
+sdkconfig.old
