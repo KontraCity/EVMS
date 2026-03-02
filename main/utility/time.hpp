@@ -10,7 +10,7 @@
 namespace evms {
 
 namespace Utility {
-    inline void Sleep(double seconds) {
+    inline void Sleep(float seconds) {
         if (seconds <= 0)
             return;
 
@@ -23,7 +23,7 @@ namespace Utility {
         vTaskDelay(seconds * 100);
     }
 
-    inline double TimeSeconds() {
+    inline float TimeSeconds() {
         int64_t microseconds = esp_timer_get_time();
         return microseconds / 1'000'000.0f;
     }
