@@ -35,7 +35,7 @@ Drivers::SpiBus::SpiBus(spi_host_device_t host, gpio_num_t sckPin, gpio_num_t mo
     busConfig.miso_io_num = misoPin;
     busConfig.quadwp_io_num = -1;
     busConfig.quadhd_io_num = -1;
-    busConfig.max_transfer_sz = 4096;
+    busConfig.max_transfer_sz = 160000;
     ESP_ERROR_CHECK(spi_bus_initialize(m_host, &busConfig, SPI_DMA_CH_AUTO));
     ESP_LOGI(m_logTag.c_str(), "Initialized with pins: \"SCK\" - %d, \"MOSI\" - %d, \"MISO\" - %d", m_sckPin, m_mosiPin, m_misoPin);
 }

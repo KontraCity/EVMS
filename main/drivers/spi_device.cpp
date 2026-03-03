@@ -31,15 +31,15 @@ Drivers::SpiDevice::~SpiDevice() {
     ESP_LOGI(m_logTag.c_str(), "Deinitialized");
 }
 
-std::vector<uint8_t> Drivers::SpiDevice::transfer(const std::vector<uint8_t>& dataOut, int dataInSize) {
-    std::vector<uint8_t> dataIn(dataInSize);
+std::vector<uint8_t> Drivers::SpiDevice::transfer(const std::vector<uint8_t>& data, size_t responseLength) {
+    std::vector<uint8_t> response(responseLength);
     spi_transaction_t transaction = {};
-    transaction.length = dataOut.size() * 8;
-    transaction.tx_buffer = dataOut.data();
-    transaction.rxlength = dataIn.size() * 8;
-    transaction.rx_buffer = dataIn.data();
+    transaction.length = data.size() * 8;
+    transaction.tx_buffer = data.data();
+    transaction.rxlength = response.size() * 8;
+    transaction.rx_buffer = response.data();
     ESP_ERROR_CHECK(spi_device_transmit(m_handle, &transaction));
-    return dataIn;
+    return response;
 }
 
 void Drivers::SpiDevice::send(const std::vector<uint8_t>& data) {
@@ -51,8 +51,17 @@ void Drivers::SpiDevice::send(const std::vector<uint8_t>& data) {
     ESP_ERROR_CHECK(spi_device_transmit(m_handle, &transaction));
 }
 
-std::vector<uint8_t> Drivers::SpiDevice::receive(int size) {
-    std::vector<uint8_t> buffer(size);
+void Drivers::SpiDevice::send(const uint8_t* data, size_t length) {
+    spi_transaction_t transaction = {};
+    transaction.length = length * 8;
+    transaction.tx_buffer = data;
+    transaction.rxlength = 0;
+    transaction.rx_buffer = nullptr;
+    ESP_ERROR_CHECK(spi_device_transmit(m_handle, &transaction));
+}
+
+std::vector<uint8_t> Drivers::SpiDevice::receive(size_t length) {
+    std::vector<uint8_t> buffer(length);
     spi_transaction_t transaction = {};
     transaction.length = 0;
     transaction.tx_buffer = nullptr;

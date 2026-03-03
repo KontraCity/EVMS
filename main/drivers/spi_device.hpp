@@ -22,11 +22,13 @@ namespace Drivers {
         ~SpiDevice();
 
     public:
-        std::vector<uint8_t> transfer(const std::vector<uint8_t>& dataOut, int dataInSize);
+        std::vector<uint8_t> transfer(const std::vector<uint8_t>& data, size_t responseLength);
 
         void send(const std::vector<uint8_t>& data);
 
-        std::vector<uint8_t> receive(int size);
+        void send(const uint8_t* data, size_t length);
+
+        std::vector<uint8_t> receive(size_t length);
     };
 }
 
