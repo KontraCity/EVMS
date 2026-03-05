@@ -17,7 +17,7 @@ namespace Drivers {
         gpio_num_t m_csPin;
 
     public:
-        SpiDevice(spi_host_device_t host, gpio_num_t csPin, int frequency, bool halfDuplex = false);
+        SpiDevice(spi_host_device_t host, gpio_num_t csPin, int frequency, bool fullDuplex = true);
 
         ~SpiDevice();
 

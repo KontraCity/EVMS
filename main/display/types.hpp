@@ -32,14 +32,19 @@ namespace Display {
         }
 
     public:
-        inline Dimensions2D dimensions() const {
+        constexpr Dimensions2D dimensions() const {
             return Dimensions;
         }
 
     public:
-        inline operator bool() const {
+        constexpr operator bool() const {
             return static_cast<bool>(Dimensions);
         }
+    };
+
+    struct Position {
+        int x = 0;
+        int y = 0;
     };
 }
 

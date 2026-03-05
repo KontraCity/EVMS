@@ -1,5 +1,6 @@
 idf_component_register(INCLUDE_DIRS "./" SRCS
     "display/screen.cpp"
+    "display/touch.cpp"
     "drivers/gpio_pin.cpp"
     "drivers/pwm_led.cpp"
     "drivers/spi_bus.cpp"

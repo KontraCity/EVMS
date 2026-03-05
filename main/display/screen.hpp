@@ -53,6 +53,11 @@ namespace Display {
         void draw(int x, int y, const Map& map);
 
         void render();
+
+    public:
+        inline const PixelMap<Dimensions>& framebuffer() const {
+            return s_framebuffer;
+        }
     };
 }
 

@@ -12,7 +12,7 @@ static std::string MakeLogTag(spi_host_device_t host, gpio_num_t csPin) {
     return "SpiDevice [" + hostStr + ", CS_" + csPinStr + "]";
 }
 
-Drivers::SpiDevice::SpiDevice(spi_host_device_t host, gpio_num_t csPin, int frequency, bool halfDuplex)
+Drivers::SpiDevice::SpiDevice(spi_host_device_t host, gpio_num_t csPin, int frequency, bool fullDuplex)
     : m_logTag(MakeLogTag(host, csPin))
     , m_handle(0)
     , m_csPin(csPin) {
@@ -21,7 +21,7 @@ Drivers::SpiDevice::SpiDevice(spi_host_device_t host, gpio_num_t csPin, int freq
     spiDeviceConfig.mode = 0;
     spiDeviceConfig.spics_io_num = m_csPin;
     spiDeviceConfig.queue_size = 1;
-    spiDeviceConfig.flags = halfDuplex ? SPI_DEVICE_HALFDUPLEX : 0;
+    spiDeviceConfig.flags = fullDuplex ? 0 : SPI_DEVICE_HALFDUPLEX;
     ESP_ERROR_CHECK(spi_bus_add_device(host, &spiDeviceConfig, &m_handle));
     ESP_LOGI(m_logTag.c_str(), "Initialized with frequency \"%d\"", frequency);
 }

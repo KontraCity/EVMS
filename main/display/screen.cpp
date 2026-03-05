@@ -13,7 +13,7 @@ static std::string MakeLogTag() {
 }
 
 Display::Screen::Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_num_t resetPin, gpio_num_t dcPin)
-    : SpiDevice(spiBus.newDevice(csPin, 60'000'000, true))
+    : SpiDevice(spiBus.newDevice(csPin, 42'000'000, false))
     , m_logTag(MakeLogTag())
     , m_resetPin(resetPin, GPIO_MODE_OUTPUT)
     , m_dcPin(dcPin, GPIO_MODE_OUTPUT) {
