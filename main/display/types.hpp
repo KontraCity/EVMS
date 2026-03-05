@@ -16,8 +16,8 @@ namespace Display {
         }
 
         inline std::strong_ordering operator<=>(const Dimensions2D& other) const {
-            size_t resolution = width * height;
-            size_t otherResolution = other.width * other.height;
+            uint64_t resolution = width * height;
+            uint64_t otherResolution = other.width * other.height;
             return resolution <=> otherResolution;
         }
     };

@@ -17,17 +17,23 @@ namespace Drivers {
     private:
         std::string m_logTag;
         spi_host_device_t m_host;
-        gpio_num_t m_sckPin;
-        gpio_num_t m_mosiPin;
-        gpio_num_t m_misoPin;
 
     public:
-        SpiBus(spi_host_device_t host, gpio_num_t sckPin, gpio_num_t mosiPin, gpio_num_t misoPin);
+        SpiBus(const char* logName, spi_host_device_t host, gpio_num_t sckPin, gpio_num_t mosiPin, gpio_num_t misoPin);
+
+        SpiBus(const SpiBus& other) = delete;
+
+        SpiBus(SpiBus&& other) noexcept;
 
         ~SpiBus();
 
     public:
-        SpiDevice newDevice(gpio_num_t csPin, int frequency, bool halfDuplex = false) const;
+        SpiBus& operator=(const SpiBus& other) = delete;
+
+        SpiBus& operator=(SpiBus&& other) noexcept;
+
+    public:
+        SpiDevice newDevice(const char* logName, gpio_num_t csPin, int frequency, bool fullDuplex = true) const;
     };
 }
 

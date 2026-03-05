@@ -7,12 +7,12 @@
 namespace evms {
 
 namespace Utility {
-    inline int Random(int min, int max) {
+    inline int RandomInteger(int min, int max) {
         static std::mt19937 generator(esp_random());
         return std::uniform_int_distribution(min, max)(generator);
     }
 
-    inline double Random(double min, double max) {
+    inline float RandomFloat(float min, float max) {
         static std::mt19937 generator(esp_random());
         return std::uniform_real_distribution(min, max)(generator);
     }

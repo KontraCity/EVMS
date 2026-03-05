@@ -63,7 +63,7 @@ static bool RowNotZero(Display::Screen& screen, int x, int y, int width) {
     return !AllNotZero(begin, width, 1);
 }
 
-static Display::Position GetPosition(Display::Touch& touch) {
+static Display::Position GetPosition(const Display::Touch& touch) {
     Display::Position pos = touch.getTouchPosition();
     if (pos.x < 0 || pos.y < 0)
         return pos;
@@ -83,20 +83,20 @@ static Display::Position GetPosition(Display::Touch& touch) {
 }
 
 extern "C" void app_main() {
-    Drivers::SpiBus spiBus(SPI2_HOST, GPIO_NUM_18, GPIO_NUM_23, GPIO_NUM_19);
+    Drivers::SpiBus spiBus("Main", SPI2_HOST, GPIO_NUM_18, GPIO_NUM_23, GPIO_NUM_19);
     Display::Screen display(spiBus, GPIO_NUM_15, GPIO_NUM_4, GPIO_NUM_2);
     Display::Touch touch(spiBus, GPIO_NUM_21, GPIO_NUM_5);
-    Drivers::PwmLed backlight(LEDC_CHANNEL_0, GPIO_NUM_22);
+    Drivers::PwmLed backlight("Backlight", LEDC_CHANNEL_0, GPIO_NUM_22);
     std::thread backlightThread;
 
     constexpr Display::Dimensions2D ScreenDims = Display::Screen::Dimensions;
     constexpr Display::Dimensions2D LogoDims = Bitmaps::DvdLogo.dimensions();
     constexpr int Speed = 1;
-    int xSpeed = Utility::Random(0, 1) ? Speed : -Speed;
-    int ySpeed = Utility::Random(0, 1) ? Speed : -Speed;
+    int xSpeed = Utility::RandomInteger(0, 1) ? Speed : -Speed;
+    int ySpeed = Utility::RandomInteger(0, 1) ? Speed : -Speed;
     int canvasHits = 0, borderHits = 0, cornerHits = 0;
-    int x = Utility::Random(0, ScreenDims.width - LogoDims.width);
-    int y = Utility::Random(0, ScreenDims.height - LogoDims.height);
+    int x = Utility::RandomInteger(0, ScreenDims.width - LogoDims.width);
+    int y = Utility::RandomInteger(0, ScreenDims.height - LogoDims.height);
 
     while (true) {
         Display::Position pos = GetPosition(touch);
@@ -152,7 +152,7 @@ extern "C" void app_main() {
         else if (xCanvasHit || yCanvasHit)
             ++canvasHits;
 
-        if (horizontalBorderHit || verticalBorderHit) {
+        if (xCanvasHit || yCanvasHit || horizontalBorderHit || verticalBorderHit) {
             std::cout << "Time: " << Utility::TimeSeconds() << "s, ";
             std::cout << "canvas hits: " << canvasHits << ", ";
             std::cout << "border hits: " << borderHits << ", ";

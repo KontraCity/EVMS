@@ -1,6 +1,6 @@
 #include "screen.hpp"
 
-#include <esp_log.h>
+#include <utility>
 
 #include "utility/time.hpp"
 
@@ -8,15 +8,10 @@ namespace evms {
 
 Display::PixelMap<Display::Screen::Dimensions> Display::Screen::s_framebuffer = {};
 
-static std::string MakeLogTag() {
-    return "Screen";
-}
-
 Display::Screen::Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_num_t resetPin, gpio_num_t dcPin)
-    : SpiDevice(spiBus.newDevice(csPin, 42'000'000, false))
-    , m_logTag(MakeLogTag())
-    , m_resetPin(resetPin, GPIO_MODE_OUTPUT)
-    , m_dcPin(dcPin, GPIO_MODE_OUTPUT) {
+    : SpiDevice(spiBus.newDevice("ILI9341", csPin, 42'000'000, false))
+    , m_resetPin("RESET", resetPin, GPIO_MODE_OUTPUT)
+    , m_dcPin("DC", dcPin, GPIO_MODE_OUTPUT) {
     // Reset and sleep out
     reset();
     command(0x11);
@@ -30,12 +25,29 @@ Display::Screen::Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_nu
     // Clear garbage in GRAM
     clear();
     render();
-
-    ESP_LOGI(m_logTag.c_str(), "Initialized");
 }
 
-Display::Screen::~Screen() {
-    ESP_LOGI(m_logTag.c_str(), "Deinitialized");
+Display::Screen::Screen(Screen&& other) noexcept
+    : SpiDevice(std::move(other))
+    , m_resetPin(std::move(other.m_resetPin))
+    , m_dcPin(std::move(other.m_dcPin))
+    , m_xStart(std::exchange(other.m_xStart, -1))
+    , m_xEnd(std::exchange(other.m_xEnd, -1))
+    , m_yStart(std::exchange(other.m_yStart, -1))
+    , m_yEnd(std::exchange(other.m_yEnd, -1))
+{}
+
+Display::Screen& Display::Screen::operator=(Screen&& other) noexcept {
+    if (&other != this) {
+        SpiDevice::operator=(std::move(other));
+        m_resetPin = std::move(other.m_resetPin);
+        m_dcPin = std::move(other.m_dcPin);
+        m_xStart = std::exchange(other.m_xStart, -1);
+        m_xEnd = std::exchange(other.m_xEnd, -1);
+        m_yStart = std::exchange(other.m_yStart, -1);
+        m_yEnd = std::exchange(other.m_yEnd, -1);
+    }
+    return *this;
 }
 
 void Display::Screen::reset() {

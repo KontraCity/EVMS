@@ -14,21 +14,29 @@ namespace Drivers {
     private:
         std::string m_logTag;
         spi_device_handle_t m_handle;
-        gpio_num_t m_csPin;
 
     public:
-        SpiDevice(spi_host_device_t host, gpio_num_t csPin, int frequency, bool fullDuplex = true);
+        SpiDevice(const char* logName, spi_host_device_t host, gpio_num_t csPin, int frequency, bool fullDuplex = true);
+
+        SpiDevice(const SpiDevice& other) = delete;
+
+        SpiDevice(SpiDevice&& other) noexcept;
 
         ~SpiDevice();
 
     public:
-        std::vector<uint8_t> transfer(const std::vector<uint8_t>& data, size_t responseLength);
+        SpiDevice& operator=(const SpiDevice& other) = delete;
 
-        void send(const std::vector<uint8_t>& data);
+        SpiDevice& operator=(SpiDevice&& other) noexcept;
 
-        void send(const uint8_t* data, size_t length);
+    public:
+        std::vector<uint8_t> transfer(const std::vector<uint8_t>& data, size_t responseLength) const;
 
-        std::vector<uint8_t> receive(size_t length);
+        void send(const std::vector<uint8_t>& data) const;
+
+        void send(const uint8_t* data, size_t length) const;
+
+        std::vector<uint8_t> receive(size_t length) const;
     };
 }
 

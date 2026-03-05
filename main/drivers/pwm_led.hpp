@@ -20,9 +20,18 @@ namespace Drivers {
         gpio_num_t m_pin;
 
     public:
-        PwmLed(ledc_channel_t channel, gpio_num_t pin);
+        PwmLed(const char* logName, ledc_channel_t channel, gpio_num_t pin);
+
+        PwmLed(const PwmLed& other) = delete;
+
+        PwmLed(PwmLed&& other) noexcept;
 
         ~PwmLed();
+
+    public:
+        PwmLed& operator=(const PwmLed& other) = delete;
+
+        PwmLed& operator=(PwmLed&& other) noexcept;
 
     private:
         void setDutyRaw(int32_t duty);

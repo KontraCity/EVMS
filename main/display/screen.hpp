@@ -2,7 +2,6 @@
 
 #include <cstdint>
 #include <cstring>
-#include <string>
 #include <vector>
 #include <algorithm>
 
@@ -22,7 +21,6 @@ namespace Display {
         static PixelMap<Dimensions> s_framebuffer;
 
     private:
-        std::string m_logTag;
         Drivers::GpioPin m_resetPin;
         Drivers::GpioPin m_dcPin;
 
@@ -33,7 +31,16 @@ namespace Display {
     public:
         Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_num_t resetPin, gpio_num_t dcPin);
 
-        ~Screen();
+        Screen(const Screen& other) = delete;
+
+        Screen(Screen&& other) noexcept;
+
+        ~Screen() = default;
+
+    public:
+        Screen& operator=(const Screen& other) = delete;
+
+        Screen& operator=(Screen&& other) noexcept;
 
     private:
         void reset();
