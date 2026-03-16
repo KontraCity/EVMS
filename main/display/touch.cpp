@@ -1,70 +1,99 @@
 #include "touch.hpp"
 
+#include <cmath>
 #include <utility>
+
+#include "display/screen.hpp"
+#include "utility/math.hpp"
 
 namespace evms {
 
-Display::Touch::Touch(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_num_t irqPin)
+Display::Touch::Touch(const Drivers::SpiBus& spiBus, gpio_num_t csPin)
     : SpiDevice(spiBus.newDevice("XPT2046", csPin, 2'000'000, true))
-    , m_irqPin("IRQ", irqPin, GPIO_MODE_INPUT) {
-}
+{}
 
 Display::Touch::Touch(Touch&& other) noexcept
     : SpiDevice(std::move(other))
-    , m_irqPin(std::move(other.m_irqPin))
+    , m_calibration(std::exchange(other.m_calibration, {}))
 {}
 
 Display::Touch& Display::Touch::operator=(Touch&& other) noexcept {
     if (&other != this) {
         SpiDevice::operator=(std::move(other));
-        m_irqPin = std::move(other.m_irqPin);
+        m_calibration = std::exchange(other.m_calibration, {});
     }
     return *this;
 }
 
-uint16_t Display::Touch::getValue(uint8_t valueCode) const {
-    constexpr uint8_t PowerMode = 0b00;
-    valueCode &= ~0b11; 
-    valueCode |= PowerMode;
-
+int Display::Touch::getValue(uint8_t valueCode) const {
     std::vector<uint8_t> response = transfer({ valueCode, 0x00, 0x00 }, 3);
     return ((response[1] << 8) | response[2]) >> 3;
 }
 
-bool Display::Touch::isTouched() const {
-    return !m_irqPin.read();
+void Display::Touch::setCalibration(const Calibration& calibration) {
+    m_calibration = calibration;
 }
 
 Display::Position Display::Touch::getTouchPosition() const {
-    if (!isTouched())
-        return { -1, -1 };
+    constexpr int EdgeLimit = 50;
+    constexpr int NoiseLimit = 20;
 
-    uint16_t x = getValue(0b1'101'00'00);
-    uint16_t y = getValue(0b1'001'00'00);
-    return { x, y };
+    for (int attempt = 0; attempt < 5; ++attempt) {
+        int x1 = getValue(0b1'101'00'00);
+        int y1 = getValue(0b1'001'00'00);
+        if (x1 < EdgeLimit || x1 > 4095 - EdgeLimit || y1 < EdgeLimit || y1 > 4095 - EdgeLimit)
+            continue; // floating, retry read
+
+        int x2 = getValue(0b1'101'00'00);
+        int y2 = getValue(0b1'001'00'00);
+        if (std::abs(x1 - x2) > NoiseLimit || std::abs(y1 - y2) > NoiseLimit)
+            continue; // noisy, retry read
+            
+        // Average the two readings
+        Position position = { (x1 + x2) / 2, (y1 + y2) / 2 };
+        if (!m_calibration.calibrated)
+            return position;
+
+        // Apply calibration
+        position.x = Utility::Constraint(Utility::ConvertRange(
+            position.x,
+            m_calibration.touchLeftLineX, m_calibration.touchRightLineX,
+            m_calibration.screenLeftLineX, m_calibration.screenRightLineX
+        ), 0, Screen::ScreenWidth);
+        position.y = Utility::Constraint(Utility::ConvertRange(
+            position.y,
+            m_calibration.touchTopLineY, m_calibration.touchBottomLineY,
+            m_calibration.screenTopLineY, m_calibration.screenBottomLineY
+        ), 0, Screen::ScreenHeight);
+        return position;
+    }
+    
+    // All attempts are noisy, not touched?
+    return { -1, -1 };
 }
 
 int Display::Touch::getTouchPressure() const {
-    if (!isTouched())
-        return 0;
+    int sum = 0;
+    for (int sample = 0; sample < 5; ++sample) {
+        int z1 = getValue(0b1'011'00'00);
+        int z2 = getValue(0b1'100'00'00);
+        if (z1 == 0 || z2 <= z1)
+            return 0;
 
-    uint16_t x = getValue(0b1'101'00'00);
-    uint16_t z1 = getValue(0b1'011'00'00);
-    uint16_t z2 = getValue(0b1'100'00'00);
-
-    if (z1 >= z2)
-        return 0;
-
-    int pressure = x;
-    pressure *= (z2 - z1);
-    pressure /= z1;
-    return pressure;
+        int x = getValue(0b1'101'00'00);
+        sum += x * (z2 - z1) / z1;
+    }
+    return sum / 5;
 }
 
 float Display::Touch::getControllerTemp() const {
-    uint16_t t0 = getValue(0b1'000'01'00);
-    uint16_t t1 = getValue(0b1'111'01'00);
-    return (t1 - t0) * 0.125f;
+    int sum = 0;
+    for (int sample = 0; sample < 5; ++sample) {
+        int t0 = getValue(0b1'000'01'00);
+        int t1 = getValue(0b1'111'01'00);
+        sum += (t1 - t0);
+    }
+    return (sum / 5) * 0.125f;
 }
 
 } // namespace evms

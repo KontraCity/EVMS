@@ -3,18 +3,30 @@
 #include <cstdint>
 
 #include "display/types.hpp"
-#include "drivers/gpio_pin.hpp"
 #include "drivers/spi_bus.hpp"
 
 namespace evms {
 
 namespace Display {
     class Touch : private Drivers::SpiDevice {
-    private:
-        Drivers::GpioPin m_irqPin;
-        
     public:
-        Touch(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_num_t irqPin);
+        struct Calibration {
+            bool calibrated   = false;
+            int touchLeftLineX    = 0;
+            int touchRightLineX   = 0;
+            int touchTopLineY     = 0;
+            int touchBottomLineY  = 0;
+            int screenLeftLineX   = 0;
+            int screenRightLineX  = 0;
+            int screenTopLineY    = 0;
+            int screenBottomLineY = 0;
+        };
+
+    private:
+        Calibration m_calibration;
+
+    public:
+        Touch(const Drivers::SpiBus& spiBus, gpio_num_t csPin);
 
         Touch(const Touch& other) = delete;
 
@@ -28,10 +40,10 @@ namespace Display {
         Touch& operator=(Touch&& other) noexcept;
 
     private:
-        uint16_t getValue(uint8_t valueCode) const;
+        int getValue(uint8_t valueCode) const;
 
     public:
-        bool isTouched() const;
+        void setCalibration(const Calibration& calibration);
 
         // { -1, -1 } if not touched
         Position getTouchPosition() const;

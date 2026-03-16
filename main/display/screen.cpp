@@ -6,7 +6,7 @@
 
 namespace evms {
 
-Display::PixelMap<Display::Screen::Dimensions> Display::Screen::s_framebuffer = {};
+Display::PixelMap<Display::Screen::ScreenSize> Display::Screen::s_framebuffer = {};
 
 Display::Screen::Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_num_t resetPin, gpio_num_t dcPin)
     : SpiDevice(spiBus.newDevice("ILI9341", csPin, 42'000'000, false))
@@ -20,7 +20,7 @@ Display::Screen::Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_nu
     // Configure
     command(0x29);                      // Display on
     command(0x3A, { 0b0'101'0'101 });   // Interface pixel format
-    command(0x36, { 0b000'000'00 });    // Memory data access control
+    command(0x36, { 0b011'000'00 });    // Memory data access control
     
     // Clear garbage in GRAM
     clear();
@@ -99,34 +99,34 @@ void Display::Screen::markChangedRegion(int x, int y, int width, int height) {
 }
 
 void Display::Screen::clear() {
-    clear(0, 0, Dimensions);
+    clear(0, 0, ScreenSize);
 }
 
-void Display::Screen::clear(int x, int y, Dimensions2D dimensions) {
+void Display::Screen::clear(int x, int y, Size size) {
     if (x < 0) {
-        dimensions.width += x;
+        size.width += x;
         x = 0;
     }
     if (y < 0) {
-        dimensions.height += y;
+        size.height += y;
         y = 0;
     }
 
-    if (x + dimensions.width > Dimensions.width)
-        dimensions.width = Dimensions.width - x;
-    if (y + dimensions.height > Dimensions.height)
-        dimensions.height = Dimensions.height - y;
+    if (x + size.width > ScreenWidth)
+        size.width = ScreenSize.width - x;
+    if (y + size.height > ScreenHeight)
+        size.height = ScreenHeight - y;
 
-    if (dimensions.width <= 0 || dimensions.height <= 0) {
+    if (size.width <= 0 || size.height <= 0) {
         // Clear region is empty or out of screen bounds!
         return;
     }
 
-    for (int row = 0; row < dimensions.height; ++row) {
-        uint16_t* regionRow = s_framebuffer.data() + ((y + row) * Dimensions.width) + x;
-        std::memset(regionRow, 0, dimensions.width * sizeof(uint16_t));
+    for (int row = 0; row < size.height; ++row) {
+        uint16_t* regionRow = s_framebuffer.data() + ((y + row) * ScreenWidth) + x;
+        std::memset(regionRow, 0, size.width * sizeof(uint16_t));
     }
-    markChangedRegion(x, y, dimensions.width, dimensions.height);
+    markChangedRegion(x, y, size.width, size.height);
 }
 
 void Display::Screen::render() {
@@ -152,7 +152,7 @@ void Display::Screen::render() {
     command(0x2C);
     m_dcPin.write(true);
     for (int row = 0; row < regionHeight; ++row) {
-        const uint16_t* regionRow = s_framebuffer.data() + ((m_yStart + row) * Dimensions.width) + m_xStart;
+        const uint16_t* regionRow = s_framebuffer.data() + ((m_yStart + row) * ScreenWidth) + m_xStart;
         send(reinterpret_cast<const uint8_t*>(regionRow), regionWidth * sizeof(uint16_t));
     }
 

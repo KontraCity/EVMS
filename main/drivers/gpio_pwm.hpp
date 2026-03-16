@@ -9,7 +9,7 @@
 namespace evms {
 
 namespace Drivers {
-    class PwmLed {
+    class GpioPwm {
     private:
         static constexpr ledc_timer_bit_t DutyResolution = LEDC_TIMER_13_BIT;
         static constexpr int32_t MaxDuty = 0b1111111111111;
@@ -20,18 +20,18 @@ namespace Drivers {
         gpio_num_t m_pin;
 
     public:
-        PwmLed(const char* logName, ledc_channel_t channel, gpio_num_t pin);
+        GpioPwm(const char* logName, ledc_channel_t channel, gpio_num_t pin);
 
-        PwmLed(const PwmLed& other) = delete;
+        GpioPwm(const GpioPwm& other) = delete;
 
-        PwmLed(PwmLed&& other) noexcept;
+        GpioPwm(GpioPwm&& other) noexcept;
 
-        ~PwmLed();
+        ~GpioPwm();
 
     public:
-        PwmLed& operator=(const PwmLed& other) = delete;
+        GpioPwm& operator=(const GpioPwm& other) = delete;
 
-        PwmLed& operator=(PwmLed&& other) noexcept;
+        GpioPwm& operator=(GpioPwm&& other) noexcept;
 
     private:
         void setDutyRaw(int32_t duty);

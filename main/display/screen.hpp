@@ -14,11 +14,13 @@ namespace evms {
 namespace Display {
     class Screen : private Drivers::SpiDevice {
     public:
-        // A typical ILI9341 screen is 240x320 pixels
-        static constexpr Dimensions2D Dimensions = { 240, 320 };
+        // A typical ILI9341 screen is 320x240 pixels
+        static constexpr int ScreenWidth = 320;
+        static constexpr int ScreenHeight = 240;
+        static constexpr Size ScreenSize = { 320, 240 };
 
     private:
-        static PixelMap<Dimensions> s_framebuffer;
+        static PixelMap<ScreenSize> s_framebuffer;
 
     private:
         Drivers::GpioPin m_resetPin;
@@ -54,7 +56,7 @@ namespace Display {
     public:
         void clear();
 
-        void clear(int x, int y, Dimensions2D dimensions);
+        void clear(int x, int y, Size size);
 
         template <typename Map>
         void draw(int x, int y, const Map& map);
@@ -62,7 +64,19 @@ namespace Display {
         void render();
 
     public:
-        inline const PixelMap<Dimensions>& framebuffer() const {
+        inline int width() const {
+            return ScreenWidth;
+        }
+
+        inline int height() const {
+            return ScreenHeight;
+        }
+
+        inline Size size() const {
+            return ScreenSize;
+        }
+
+        inline const PixelMap<ScreenSize>& framebuffer() const {
             return s_framebuffer;
         }
     };

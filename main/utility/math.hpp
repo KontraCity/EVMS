@@ -26,7 +26,7 @@ namespace Utility {
         Wide outRange = static_cast<Wide>(outMax - outMin);
         Wide inRange = static_cast<Wide>(inMax - inMin);
         Wide result = valueInRange * outRange / inRange + outMin;
-        return Constraint(static_cast<T>(result), outMin, outMax);
+        return static_cast<T>(result);
     }
 }
     

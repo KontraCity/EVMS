@@ -3,17 +3,17 @@ namespace evms {
 namespace Display {
     template <typename Map>
     void Screen::draw(int x, int y, const Map& map) {
-        Dimensions2D mapDimensions = map.dimensions();
-        if (!mapDimensions) {
+        Size mapSize = map.size();
+        if (!mapSize) {
             // Map is empty. Can't draw!
             return;
         }
 
-        if (x + mapDimensions.width <= 0 || x >= Dimensions.width) {
+        if (x + mapSize.width <= 0 || x >= ScreenWidth) {
             // Map is out of display bounds x-wise!
             return;
         }
-        if (y + mapDimensions.height <= 0 || y >= Dimensions.height) {
+        if (y + mapSize.height <= 0 || y >= ScreenHeight) {
             // Map is out of display bounds y-wise!
             return;
         }
@@ -28,24 +28,24 @@ namespace Display {
             y = 0;
         }
 
-        int mapStride = mapDimensions.width;
-        if (x + (mapDimensions.width - widthStart) > Dimensions.width)
-            mapDimensions.width = Dimensions.width + widthStart - x;
-        if (y + (mapDimensions.height - heightStart) > Dimensions.height)
-            mapDimensions.height = Dimensions.height + heightStart - y;
+        int mapStride = mapSize.width;
+        if (x + (mapSize.width - widthStart) > ScreenWidth)
+            mapSize.width = ScreenWidth + widthStart - x;
+        if (y + (mapSize.height - heightStart) > ScreenHeight)
+            mapSize.height = ScreenHeight + heightStart - y;
 
         int colsToCopy = std::min<std::size_t>(
-            mapDimensions.width - static_cast<std::size_t>(widthStart),
-            Dimensions.width - static_cast<std::size_t>(x)
+            mapSize.width - static_cast<std::size_t>(widthStart),
+            ScreenWidth - static_cast<std::size_t>(x)
         );
         int rowsToCopy = std::min<std::size_t>(
-            mapDimensions.height - static_cast<std::size_t>(heightStart),
-            Dimensions.height - static_cast<std::size_t>(y)
+            mapSize.height - static_cast<std::size_t>(heightStart),
+            ScreenHeight - static_cast<std::size_t>(y)
         );
 
         for (int row = 0; row < rowsToCopy; ++row) {
             const uint16_t* mapRow = map.data() + ((heightStart + row) * mapStride) + widthStart;
-            uint16_t* regionRow = s_framebuffer.data() + ((y + row) * Dimensions.width) + x;
+            uint16_t* regionRow = s_framebuffer.data() + ((y + row) * ScreenWidth) + x;
             std::memcpy(regionRow, mapRow, colsToCopy * sizeof(uint16_t));
         }
         markChangedRegion(x, y, colsToCopy, rowsToCopy);
