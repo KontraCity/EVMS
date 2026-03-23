@@ -2,6 +2,7 @@
 
 #include <utility>
 
+#include "utility/pixel.hpp"
 #include "utility/time.hpp"
 
 namespace evms {
@@ -84,6 +85,25 @@ bool Display::Screen::framebufferChanged() const {
 }
 
 void Display::Screen::markChangedRegion(int x, int y, int width, int height) {
+    if (x < 0) {
+        width += x;
+        x = 0;
+    }
+    if (y < 0) {
+        height += y;
+        y = 0;
+    }
+
+    if (x + width > ScreenWidth)
+        width = ScreenWidth - x;
+    if (y + height > ScreenHeight)
+        height = ScreenHeight - y;
+
+    if (width <= 0 || height <= 0) {
+        // Changed region is empty or out of screen bounds!
+        return;
+    }
+
     if (!framebufferChanged()) {
         m_xStart = x;
         m_xEnd = x + width - 1;
@@ -113,7 +133,7 @@ void Display::Screen::clear(int x, int y, Size size) {
     }
 
     if (x + size.width > ScreenWidth)
-        size.width = ScreenSize.width - x;
+        size.width = ScreenWidth - x;
     if (y + size.height > ScreenHeight)
         size.height = ScreenHeight - y;
 
@@ -127,6 +147,26 @@ void Display::Screen::clear(int x, int y, Size size) {
         std::memset(regionRow, 0, size.width * sizeof(uint16_t));
     }
     markChangedRegion(x, y, size.width, size.height);
+}
+
+void Display::Screen::setPixelUnmarked(int x, int y, uint16_t pixel) {
+    if (x < 0 || y < 0 || x >= ScreenWidth || y >= ScreenHeight) {
+        // Pixel is out of screen bounds!
+        return;
+    }
+
+    s_framebuffer[y * ScreenWidth + x] = __builtin_bswap16(pixel);
+}
+
+void Display::Screen::blendPixelUnmarked(int x, int y, uint16_t pixel, uint8_t alpha) {
+    if (x < 0 || y < 0 || x >= ScreenWidth || y >= ScreenHeight) {
+        // Pixel is out of screen bounds!
+        return;
+    }
+
+    uint16_t& framebufferPixel = s_framebuffer[y * ScreenWidth + x];
+    uint16_t blended = Utility::Blend565RGB(__builtin_bswap16(framebufferPixel), pixel, alpha);
+    framebufferPixel = __builtin_bswap16(blended);
 }
 
 void Display::Screen::render() {
@@ -149,6 +189,7 @@ void Display::Screen::render() {
     int regionWidth = m_xEnd - m_xStart + 1;
     int regionHeight = m_yEnd - m_yStart + 1;
 
+    float start = Utility::TimeSeconds();
     command(0x2C);
     m_dcPin.write(true);
     for (int row = 0; row < regionHeight; ++row) {

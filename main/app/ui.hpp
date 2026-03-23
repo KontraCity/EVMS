@@ -6,7 +6,6 @@
 #include "display/touch.hpp"
 #include "drivers/gpio_pwm.hpp"
 #include "drivers/spi_bus.hpp"
-#include "fonts/ecam_font.hpp"
 
 namespace evms {
 
@@ -14,8 +13,20 @@ namespace App {
     class Ui {
     private:
         using Screen = Display::Screen;
-        using Glyph = Fonts::EcamFontGlyph;
     
+        struct Packet {
+            float manifoldAbsolutePress = 0.0f;
+            float fuelFlow = 0.0f;
+            float oilPressure = 0.0f;
+            int   gear = 0;
+            float engineLoad = 0;
+            float intakeAirTemp = 0.0f;
+            float batteryVoltage = 0.0f;
+            float coolantTemp = 0.0f;
+            float oilTemp = 0.0f;
+            float gearboxTemp = 0.0f;
+        };
+
     public:
         struct Config {
             gpio_num_t csPin;
@@ -27,6 +38,9 @@ namespace App {
             gpio_num_t misoPin;
             gpio_num_t tcsPin;
         };
+
+    private:
+        static Packet ReadPacket();
 
     private:
         std::string m_logTag;
@@ -53,12 +67,6 @@ namespace App {
         void calibrateTouch();
 
         bool applyTouchCalibration(bool overwrite, Display::Touch::Calibration calibration = {});
-
-        Display::Size getTextSize(const std::string& text);
-
-        void printText(int x, int y, const std::string& text);
-
-        void printCenteredText(const std::vector<std::string>& lines);
 
     public:
         void mainloop();

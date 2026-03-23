@@ -51,15 +51,19 @@ namespace Display {
 
         bool framebufferChanged() const;
 
-        void markChangedRegion(int xStart, int xEnd, int yStart, int yEnd);
-
     public:
+        void markChangedRegion(int x, int y, int width, int height);
+
         void clear();
 
         void clear(int x, int y, Size size);
 
         template <typename Map>
         void draw(int x, int y, const Map& map);
+
+        void setPixelUnmarked(int x, int y, uint16_t pixel);
+
+        void blendPixelUnmarked(int x, int y, uint16_t pixel, uint8_t alpha);
 
         void render();
 

@@ -6,7 +6,7 @@ namespace evms {
 
 namespace Utility {
     template <typename T>
-    inline T Constraint(T value, T min, T max) {
+    inline T Clamp(T value, T min, T max) {
         if (value < min)
             value = min;
         else if (value > max)
@@ -15,7 +15,7 @@ namespace Utility {
     }
 
     template <typename T>
-    inline T ConvertRange(T value, T inMin, T inMax, T outMin, T outMax) {
+    inline T Map(T value, T inMin, T inMax, T outMin, T outMax, bool clamp = false) {
         // Avoid division by zero
         if (inMax == inMin)
             return outMin;
@@ -25,8 +25,8 @@ namespace Utility {
         Wide valueInRange = static_cast<Wide>(value - inMin);
         Wide outRange = static_cast<Wide>(outMax - outMin);
         Wide inRange = static_cast<Wide>(inMax - inMin);
-        Wide result = valueInRange * outRange / inRange + outMin;
-        return static_cast<T>(result);
+        T result = static_cast<T>(valueInRange * outRange / inRange + outMin);
+        return clamp ? Clamp(result, outMin, outMax) : result;
     }
 }
     

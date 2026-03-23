@@ -70,7 +70,7 @@ Drivers::GpioPwm& Drivers::GpioPwm::operator=(GpioPwm&& other) noexcept {
 }
 
 void Drivers::GpioPwm::setDutyRaw(int32_t duty) {
-    duty = Utility::Constraint<uint32_t>(duty, 0, MaxDuty);
+    duty = Utility::Clamp<uint32_t>(duty, 0, MaxDuty);
     ESP_ERROR_CHECK(ledc_set_duty(LEDC_LOW_SPEED_MODE, m_channel, duty));
     ESP_ERROR_CHECK(ledc_update_duty(LEDC_LOW_SPEED_MODE, m_channel));
 }
@@ -80,7 +80,7 @@ void Drivers::GpioPwm::setDuty(uint8_t value) {
 }
 
 void Drivers::GpioPwm::setDutyPercent(float percent) {
-    percent = Utility::Constraint(percent, 0.0f, 100.0f);
+    percent = Utility::Clamp(percent, 0.0f, 100.0f);
     setDutyRaw(static_cast<int32_t>((percent * MaxDuty) / 100.0f));
 }
 

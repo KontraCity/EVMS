@@ -55,12 +55,12 @@ Display::Position Display::Touch::getTouchPosition() const {
             return position;
 
         // Apply calibration
-        position.x = Utility::Constraint(Utility::ConvertRange(
+        position.x = Utility::Clamp(Utility::Map(
             position.x,
             m_calibration.touchLeftLineX, m_calibration.touchRightLineX,
             m_calibration.screenLeftLineX, m_calibration.screenRightLineX
         ), 0, Screen::ScreenWidth);
-        position.y = Utility::Constraint(Utility::ConvertRange(
+        position.y = Utility::Clamp(Utility::Map(
             position.y,
             m_calibration.touchTopLineY, m_calibration.touchBottomLineY,
             m_calibration.screenTopLineY, m_calibration.screenBottomLineY

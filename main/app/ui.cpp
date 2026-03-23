@@ -1,10 +1,13 @@
 #include "app/ui.hpp"
 
+#include <cstdio>
+#include <array>
 #include <utility>
 
 #include "app/bitmaps.hpp"
 #include "drivers/nvs_storage.hpp"
-#include "utility/math.hpp"
+#include "graphics/gauges.hpp"
+#include "utility/io.hpp"
 #include "utility/time.hpp"
 
 #include <esp_log.h>
@@ -13,6 +16,28 @@ namespace evms {
 
 static std::string MakeLogTag() {
     return "App";
+}
+
+App::Ui::Packet App::Ui::ReadPacket() {
+    Utility::InitializeIO();
+
+    bool syncStarted = false;
+    while (true) {
+        uint8_t byte = std::getchar();
+        if (byte == 0xAA) {
+            syncStarted = true;
+            continue;
+        }
+        
+        if (syncStarted && byte == 0x55)
+            break;
+        syncStarted = false;
+    }
+
+    std::array<uint8_t, sizeof(Packet)> buffer;
+    for (int index = 0; index < sizeof(Packet); ++index)
+        buffer[index] = std::getchar();
+    return *reinterpret_cast<Packet*>(&buffer);
 }
 
 App::Ui::Ui(const Config& config)
@@ -57,33 +82,50 @@ void App::Ui::calibrateTouch() {
     constexpr Display::Position BottomLeftPos = { Offset, Screen::ScreenHeight - Offset };
 
     auto ShowCrossAndGetPos = [this](int index, int x, int y) -> Display::Position {
-        m_screen.clear();
-        std::vector<std::string> messages = {
-            "CALIBRATION",
-            "TOUCH PRECISELY",
-            std::to_string(index) + "/4 PRESSES"
+        auto GetTouchMessageBitmap = [this](int index) -> const TouchMessageBitmapType& {
+            if (index == 1)
+                return FirstTouchMessageBitmap;
+            if (index == 2)
+                return SecondTouchMessageBitmap;
+            if (index == 3)
+                return ThirdTouchMessageBitmap;
+            return FourthTouchMessageBitmap;
         };
-        printCenteredText(messages);
 
-        const auto& CrossBitmap = evms::App::CrossBitmap;
-        m_screen.draw(
-            x - CrossBitmap.MapWidth / 2,
-            y - CrossBitmap.MapHeight / 2,
-            CrossBitmap
-        );
+        m_screen.clear();
+        m_screen.draw(77, 94, CalibrationMessageBitmap);
+        m_screen.draw(77, 114, PleaseTouchAsInstructedMessageBitmap);
+        m_screen.draw(123, 132, GetTouchMessageBitmap(index));
+        m_screen.draw(x - CrossBitmap.width() / 2, y - CrossBitmap.height() / 2, CrossBitmap);
         m_screen.render();
 
-        Display::Position position = { -1, -1 };
-        while (!(position = m_touch.getTouchPosition()))
-            Utility::Sleep(0.1f);
+        static float s_prevReleaseTime = -1.0f;
+        if (index == 1)
+            s_prevReleaseTime = -1.0f;
 
-        m_screen.clear();
-        messages[1] = "RELEASE";
-        printCenteredText(messages);
+        Display::Position position = { -1, -1 };
+        while (true) {
+            position = m_touch.getTouchPosition();
+            if (position && Utility::TimeSeconds() - s_prevReleaseTime >= 0.5f)
+                break;
+            Utility::Sleep(0.1f);
+        }
+
+        m_screen.clear(x - CrossBitmap.width() / 2, y - CrossBitmap.height() / 2, CrossBitmap.size());
+        m_screen.clear(77, 114, PleaseTouchAsInstructedMessageBitmap.size());
+        m_screen.draw(81, 114, RecordedPleaseReleaseMessageBitmap);
         m_screen.render();
 
         while (m_touch.getTouchPosition())
             Utility::Sleep(0.1f);
+        s_prevReleaseTime = Utility::TimeSeconds();
+        
+        if (index == 4) {
+            m_screen.clear(81, 114, RecordedPleaseReleaseMessageBitmap.size());
+            m_screen.draw(127, 114, ThankYouMessageBitmap);
+            m_screen.render();
+            Utility::Sleep(2.0f);
+        }
         return position;
     };
 
@@ -136,41 +178,37 @@ bool App::Ui::applyTouchCalibration(bool overwrite, Display::Touch::Calibration 
     return success;
 }
 
-Display::Size App::Ui::getTextSize(const std::string& text) {
-    Display::Size size = Glyph::MapSize;
-    size.width *= text.length();
-    return size;
-}
-
-void App::Ui::printText(int x, int y, const std::string& text) {
-    for (char character : text) {
-        m_screen.draw(x, y, Fonts::GetEcamFontGlyph(character));
-        x += Glyph::MapWidth;
-    }
-}
-
-void App::Ui::printCenteredText(const std::vector<std::string>& lines) {
-    constexpr int Spacing = 5;
-    int y = (Screen::ScreenHeight - (Glyph::MapHeight + Spacing) * lines.size()) / 2;
-    for (const std::string& line : lines) {
-        int x = (Screen::ScreenWidth - getTextSize(line).width) / 2;
-        printText(x, y, line);
-        y += Glyph::MapHeight + Spacing;
-    }
-}
-
 void App::Ui::mainloop() {
     m_backlight.setDutyPercent(100.0f);
-    while (true) {
-        Display::Position position = m_touch.getTouchPosition();
-        if (!position) {
-            Utility::Sleep(0.01f);
-            continue;
-        }
+    Graphics::DrawLabels(m_screen);
+    m_screen.render();
 
-        m_screen.draw(position.x - 1, position.y - 1, DotBitmap);
+    Packet packet = {
+        // Some data simulating a spirited drive
+        .manifoldAbsolutePress  = 1.724f,
+        .fuelFlow               = 11.5f,
+        .oilPressure            = 4.1f,
+        .gear                   = 3,
+        .engineLoad             = 71.4f,
+        .intakeAirTemp          = 46.7f,
+        .batteryVoltage         = 13.8f,
+        .coolantTemp            = 96.2f,
+        .oilTemp                = 108.5f,
+        .gearboxTemp            = 84.1f
+    };
+    for (int frame = 0; true; ++frame) {
+        Graphics::DrawManifoldAbsolutePressGauge(m_screen, packet.manifoldAbsolutePress);
+        Graphics::DrawFuelFlowGauge(m_screen, packet.fuelFlow);
+        Graphics::DrawOilPressGauge(m_screen, packet.oilPressure);
+        Graphics::DrawGearText(m_screen, packet.gear);
+        Graphics::DrawEngineLoadText(m_screen, packet.engineLoad);
+        Graphics::DrawIntakeAirTempText(m_screen, packet.intakeAirTemp);
+        Graphics::DrawBatteryVoltageText(m_screen, packet.batteryVoltage);
+        Graphics::DrawCoolantTempGauge(m_screen, packet.coolantTemp);
+        Graphics::DrawOilTempGauge(m_screen, packet.oilTemp);
+        Graphics::DrawGearboxTempGauge(m_screen, packet.gearboxTemp);
         m_screen.render();
-        Utility::Sleep(0.01f);
+        packet = ReadPacket();
     }
 }
 

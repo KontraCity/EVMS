@@ -14,7 +14,7 @@
 namespace evms {
 
 namespace Utility {
-    inline void Utility::InitializeIO() {
+    inline void InitializeIO() {
         static bool s_initialized = false;
         if (!s_initialized) {
             setvbuf(stdin, NULL, _IONBF, 0);
@@ -27,8 +27,8 @@ namespace Utility {
         }
     }
 
-    inline std::string Utility::RequestString(const char* comment) {
-        Utility::InitializeIO();
+    inline std::string RequestString(const char* comment) {
+        InitializeIO();
         while (true) {
             if (std::strlen(comment) != 0)
                 std::printf("%s ", comment);
@@ -45,7 +45,7 @@ namespace Utility {
         }
     }
 
-    inline int Utility::RequestInteger(const char* comment) {
+    inline int RequestInteger(const char* comment) {
         int result;
         while (true) {
             std::string input = RequestString(comment);
@@ -54,7 +54,7 @@ namespace Utility {
         }
     }
 
-    inline float Utility::RequestFloat(const char* comment) {
+    inline float RequestFloat(const char* comment) {
         float result;
         while (true) {
             std::string input = RequestString(comment);
