@@ -93,7 +93,7 @@ float Display::Touch::getControllerTemp() const {
         int t1 = getValue(0b1'111'01'00);
         sum += (t1 - t0);
     }
-    return (sum / 5) * 0.125f;
+    return (sum / 5.0f) * 0.125f;
 }
 
 } // namespace evms

@@ -9,10 +9,6 @@
 
 namespace evms {
 
-static std::string MakeLogTag(const std::string& namespaceName) {
-    return namespaceName + " NVSS";
-}
-
 static void InitializeNvsFlash() {
     static bool s_initialized = false;
     if (!s_initialized) {
@@ -26,11 +22,11 @@ static void InitializeNvsFlash() {
     }
 }
 
-Drivers::NvsStorage::NvsStorage(const char* namespaceName)
-    : m_logTag(MakeLogTag(namespaceName))
+Drivers::NvsStorage::NvsStorage(const std::string& namespaceName)
+    : m_logTag(namespaceName + " NVSS")
     , m_handle(0) {
     InitializeNvsFlash();
-    ESP_ERROR_CHECK(nvs_open(namespaceName, NVS_READWRITE, &m_handle));
+    ESP_ERROR_CHECK(nvs_open(namespaceName.c_str(), NVS_READWRITE, &m_handle));
     ESP_LOGI(m_logTag.c_str(), "Initialized");
 }
 

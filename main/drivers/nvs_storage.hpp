@@ -14,7 +14,7 @@ namespace Drivers {
         nvs_handle_t m_handle;
 
     public:
-        NvsStorage(const char* namespaceName);
+        NvsStorage(const std::string& namespaceName);
 
         NvsStorage(const NvsStorage& other) = delete;
 

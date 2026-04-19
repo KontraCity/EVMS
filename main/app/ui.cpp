@@ -14,10 +14,6 @@
 
 namespace evms {
 
-static std::string MakeLogTag() {
-    return "App";
-}
-
 App::Ui::Packet App::Ui::ReadPacket() {
     Utility::InitializeIO();
 
@@ -41,7 +37,7 @@ App::Ui::Packet App::Ui::ReadPacket() {
 }
 
 App::Ui::Ui(const Config& config)
-    : m_logTag(MakeLogTag())
+    : m_logTag("App")
     , m_spiBus("Main", SPI2_HOST, config.sckPin, config.mosiPin, config.misoPin)
     , m_backlight("Backlight", LEDC_CHANNEL_0, config.ledPin)
     , m_screen(m_spiBus, config.csPin, config.resetPin, config.dcPin)

@@ -34,7 +34,7 @@ Drivers::SpiDevice::SpiDevice(SpiDevice&& other) noexcept
 
 Drivers::SpiDevice::~SpiDevice() {
     if (m_handle != nullptr) {
-        ESP_ERROR_CHECK(spi_bus_remove_device(m_handle));
+        spi_bus_remove_device(m_handle);
         ESP_LOGI(m_logTag.c_str(), "Deinitialized");
     }
 }

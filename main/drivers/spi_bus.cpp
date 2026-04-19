@@ -46,7 +46,7 @@ Drivers::SpiBus::SpiBus(SpiBus&& other) noexcept
 
 Drivers::SpiBus::~SpiBus() {
     if (m_host != SPI_HOST_MAX) {
-        ESP_ERROR_CHECK(spi_bus_free(m_host));
+        spi_bus_free(m_host);
         ESP_LOGI(m_logTag.c_str(), "Deinitialized");
     }
 }

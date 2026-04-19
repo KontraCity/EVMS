@@ -189,7 +189,6 @@ void Display::Screen::render() {
     int regionWidth = m_xEnd - m_xStart + 1;
     int regionHeight = m_yEnd - m_yStart + 1;
 
-    float start = Utility::TimeSeconds();
     command(0x2C);
     m_dcPin.write(true);
     for (int row = 0; row < regionHeight; ++row) {

@@ -3,6 +3,7 @@ idf_component_register(INCLUDE_DIRS "./" SRCS
     "app/ui.cpp"
     "display/screen.cpp"
     "display/touch.cpp"
+    "drivers/can_bus.cpp"
     "drivers/gpio_interrupt.cpp"
     "drivers/gpio_pin.cpp"
     "drivers/gpio_pwm.cpp"
