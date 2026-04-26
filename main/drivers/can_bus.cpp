@@ -42,15 +42,14 @@ Drivers::CanBus& Drivers::CanBus::operator=(CanBus&& other) noexcept {
 }
 
 bool Drivers::CanBus::send(const Message& message) const {
-    twai_message_t payload = {
-        .extd = 0,  // 11-bit ID
-        .rtr = 0,   // Not a remote request
-        .ss = 0,    // Not a single shot request
-        .self = 0,  // Not a self-reception request
-        .identifier = message.id,
-        .data_length_code = TWAI_FRAME_MAX_DLC,
-        .data = {}
-    };
+    twai_message_t payload = {};
+    payload.extd = 0;  // 11-bit ID
+    payload.rtr = 0;   // Not a remote request
+    payload.ss = 0;    // Not a single shot request
+    payload.self = 0;  // Not a self-reception request
+    payload.identifier = message.id;
+    payload.data_length_code = TWAI_FRAME_MAX_DLC;
+    
     std::copy(
         message.data.data(),
         message.data.data() + message.data.size(),

@@ -67,9 +67,9 @@ namespace App {
     private:
         void calibrateTouch();
 
-        Packet readPacket();
-
         bool applyTouchCalibration(bool overwrite, Display::Touch::Calibration calibration = {});
+
+        Packet readPacket();
 
     public:
         void mainloop();

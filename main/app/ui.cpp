@@ -10,7 +10,6 @@
 
 #include "app/bitmaps.hpp"
 #include "drivers/nvs_storage.hpp"
-#include "graphics/gauges.hpp"
 #include "utility/io.hpp"
 #include "utility/time.hpp"
 
@@ -213,18 +212,6 @@ void App::Ui::calibrateTouch() {
     });
 }
 
-App::Ui::Packet App::Ui::readPacket() {
-    auto data = Service01Request(m_canBus, { 0x0B, 0x04, 0x0F, 0x42, 0x05 });
-
-    Packet packet = {};
-    packet.manifoldAbsolutePress = data[2] / 100.0f;
-    packet.engineLoad = data[4] / 2.55f;
-    packet.intakeAirTemp = data[6] - 40.0f;
-    packet.batteryVoltage = (256.0f * data[8] + data[9]) / 1000.0f;
-    packet.coolantTemp = data[11] - 40.0f;
-    return packet;
-}
-
 bool App::Ui::applyTouchCalibration(bool overwrite, Display::Touch::Calibration calibration) {
     constexpr const char* StorageNamespace = "Touch";
     constexpr const char* CalibrationFieldName = "calibration";
@@ -247,26 +234,21 @@ bool App::Ui::applyTouchCalibration(bool overwrite, Display::Touch::Calibration 
     return success;
 }
 
-void App::Ui::mainloop() {
-    m_backlight.setDutyPercent(100.0f);
-    Graphics::DrawLabels(m_screen);
-    m_screen.render();
+App::Ui::Packet App::Ui::readPacket() {
+    auto data = Service01Request(m_canBus, { 0x0B, 0x04, 0x0F, 0x42, 0x05 });
 
     Packet packet = {};
-    for (int frame = 0; true; ++frame) {
-        Graphics::DrawManifoldAbsolutePressGauge(m_screen, packet.manifoldAbsolutePress);
-        Graphics::DrawFuelFlowGauge(m_screen, packet.fuelFlow);
-        Graphics::DrawOilPressGauge(m_screen, packet.oilPressure);
-        Graphics::DrawGearText(m_screen, packet.gear);
-        Graphics::DrawEngineLoadText(m_screen, packet.engineLoad);
-        Graphics::DrawIntakeAirTempText(m_screen, packet.intakeAirTemp);
-        Graphics::DrawBatteryVoltageText(m_screen, packet.batteryVoltage);
-        Graphics::DrawCoolantTempGauge(m_screen, packet.coolantTemp);
-        Graphics::DrawOilTempGauge(m_screen, packet.oilTemp);
-        Graphics::DrawGearboxTempGauge(m_screen, packet.gearboxTemp);
-        m_screen.render();
-        packet = readPacket();
-    }
+    packet.manifoldAbsolutePress = data[2] / 100.0f;
+    packet.engineLoad = data[4] / 2.55f;
+    packet.intakeAirTemp = data[6] - 40.0f;
+    packet.batteryVoltage = (256.0f * data[8] + data[9]) / 1000.0f;
+    packet.coolantTemp = data[11] - 40.0f;
+    return packet;
+}
+
+void App::Ui::mainloop() {
+    m_backlight.setDutyPercent(100.0f);
+    Utility::Sleep(9999.9f);
 }
 
 } // namespace evms

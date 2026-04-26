@@ -10,10 +10,5 @@ idf_component_register(INCLUDE_DIRS "./" SRCS
     "drivers/nvs_storage.cpp"
     "drivers/spi_bus.cpp"
     "drivers/spi_device.cpp"
-    "fonts/ecam_value_14.cpp"
-    "fonts/ecam_value_16.cpp"
-    "graphics/bitmaps.cpp"
-    "graphics/gauges.cpp"
-    "graphics/shapes.cpp"
     "main/main.cpp"
 )
