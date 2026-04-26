@@ -14,19 +14,6 @@ namespace App {
     class Ui {
     private:
         using Screen = Display::Screen;
-    
-        struct Packet {
-            float manifoldAbsolutePress = 0.0f;
-            float fuelFlow = 0.0f;
-            float oilPressure = 0.0f;
-            int   gear = 0;
-            float engineLoad = 0;
-            float intakeAirTemp = 0.0f;
-            float batteryVoltage = 0.0f;
-            float coolantTemp = 0.0f;
-            float oilTemp = 0.0f;
-            float gearboxTemp = 0.0f;
-        };
 
     public:
         struct Config {
@@ -68,8 +55,6 @@ namespace App {
         void calibrateTouch();
 
         bool applyTouchCalibration(bool overwrite, Display::Touch::Calibration calibration = {});
-
-        Packet readPacket();
 
     public:
         void mainloop();

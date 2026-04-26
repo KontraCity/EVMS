@@ -17,12 +17,14 @@
 
 namespace evms {
 
+/*
 static void PrintMessage(const char* comment, const Drivers::CanBus::Message& message) {
     printf("%s ID: %03X | ", comment, static_cast<unsigned int>(message.id));
     for (int index = 0; index < message.data.size(); index++)
         printf("%02X ", message.data[index]);
     printf("\n");
 }
+*/
 
 static Drivers::CanBus::Message ExpectMessage(const Drivers::CanBus& canBus, uint32_t id) {
     while (true) {
@@ -148,12 +150,14 @@ void App::Ui::calibrateTouch() {
             return FourthTouchMessageBitmap;
         };
 
+        constexpr int baseX = (Display::Screen::ScreenWidth - CalibrationMessageBitmap.width()) / 2;
+        constexpr int baseY = (Display::Screen::ScreenHeight - CalibrationMessageBitmap.height()) / 2;
+
         m_screen.clear();
-        m_screen.draw(77, 94, CalibrationMessageBitmap);
-        m_screen.draw(77, 114, PleaseTouchAsInstructedMessageBitmap);
-        m_screen.draw(123, 132, GetTouchMessageBitmap(index));
-        m_screen.draw(x - CrossBitmap.width() / 2, y - CrossBitmap.height() / 2, CrossBitmap);
-        m_screen.render();
+        m_screen.render(baseX, baseY, CalibrationMessageBitmap);
+        m_screen.render(baseX, baseY + 20, PleaseTouchAsInstructedMessageBitmap);
+        m_screen.render(baseX + 46, baseY + 38, GetTouchMessageBitmap(index));
+        m_screen.render(x - CrossBitmap.width() / 2, y - CrossBitmap.height() / 2, CrossBitmap);
 
         static float s_prevReleaseTime = -1.0f;
         if (index == 1)
@@ -168,25 +172,22 @@ void App::Ui::calibrateTouch() {
         }
 
         m_screen.clear(x - CrossBitmap.width() / 2, y - CrossBitmap.height() / 2, CrossBitmap.size());
-        m_screen.clear(77, 114, PleaseTouchAsInstructedMessageBitmap.size());
-        m_screen.draw(81, 114, RecordedPleaseReleaseMessageBitmap);
-        m_screen.render();
+        m_screen.clear(baseX, baseY + 20, PleaseTouchAsInstructedMessageBitmap.size());
+        m_screen.render(baseX + 4, baseY + 20, RecordedPleaseReleaseMessageBitmap);
 
         while (m_touch.getTouchPosition())
             Utility::Sleep(0.1f);
         s_prevReleaseTime = Utility::TimeSeconds();
         
         if (index == 4) {
-            m_screen.clear(81, 114, RecordedPleaseReleaseMessageBitmap.size());
-            m_screen.draw(127, 114, ThankYouMessageBitmap);
-            m_screen.render();
+            m_screen.clear(baseX + 4, baseY + 20, RecordedPleaseReleaseMessageBitmap.size());
+            m_screen.render(baseX + 50, baseY + 20, ThankYouMessageBitmap);
             Utility::Sleep(2.0f);
         }
         return position;
     };
 
     m_screen.clear();
-    m_screen.render();
     m_backlight.setDutyPercent(100.0f);
     ESP_LOGI(m_logTag.c_str(), "Calibrating touch");
 
@@ -196,7 +197,6 @@ void App::Ui::calibrateTouch() {
     Display::Position bottomLeftTouchPos = ShowCrossAndGetPos(4, BottomLeftPos.x, BottomLeftPos.y);
 
     m_screen.clear();
-    m_screen.render();
     m_backlight.setDutyPercent(0.0f);
 
     applyTouchCalibration(true, {
@@ -232,18 +232,6 @@ bool App::Ui::applyTouchCalibration(bool overwrite, Display::Touch::Calibration 
         ESP_LOGI(m_logTag.c_str(), "Touch calibration applied");
     }
     return success;
-}
-
-App::Ui::Packet App::Ui::readPacket() {
-    auto data = Service01Request(m_canBus, { 0x0B, 0x04, 0x0F, 0x42, 0x05 });
-
-    Packet packet = {};
-    packet.manifoldAbsolutePress = data[2] / 100.0f;
-    packet.engineLoad = data[4] / 2.55f;
-    packet.intakeAirTemp = data[6] - 40.0f;
-    packet.batteryVoltage = (256.0f * data[8] + data[9]) / 1000.0f;
-    packet.coolantTemp = data[11] - 40.0f;
-    return packet;
 }
 
 void App::Ui::mainloop() {
