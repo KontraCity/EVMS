@@ -4,6 +4,7 @@
 
 #include "display/screen.hpp"
 #include "display/touch.hpp"
+#include "drivers/can_bus.hpp"
 #include "drivers/gpio_pwm.hpp"
 #include "drivers/spi_bus.hpp"
 
@@ -29,6 +30,8 @@ namespace App {
 
     public:
         struct Config {
+            gpio_num_t txPin;
+            gpio_num_t rxPin;
             gpio_num_t csPin;
             gpio_num_t resetPin;
             gpio_num_t dcPin;
@@ -40,10 +43,8 @@ namespace App {
         };
 
     private:
-        static Packet ReadPacket();
-
-    private:
         std::string m_logTag;
+        Drivers::CanBus m_canBus;
         Drivers::SpiBus m_spiBus;
         Drivers::GpioPwm m_backlight;
         Display::Screen m_screen;
@@ -65,6 +66,8 @@ namespace App {
 
     private:
         void calibrateTouch();
+
+        Packet readPacket();
 
         bool applyTouchCalibration(bool overwrite, Display::Touch::Calibration calibration = {});
 

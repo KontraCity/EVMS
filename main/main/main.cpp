@@ -1,17 +1,33 @@
-#include <stdio.h>
-
-#include "drivers/can_bus.hpp"
+#include "app/ui.hpp"
 using namespace evms;
 
+/*
+*   Connection to the 2.4" TFT display:
+*   Screen      ESP32
+*   VCC         3.3
+*   GND         GND
+*   CS           15
+*   RESET         0
+*   DC            2
+*   MOSI         23
+*   SCK          18
+*   LED          22
+*   MISO         19
+*   T_CS         21
+*/
+
 extern "C" void app_main() {
-    Drivers::CanBus canBus("Car", GPIO_NUM_5, GPIO_NUM_4);
-    while (true) {
-        Drivers::CanBus::Message message = canBus.receive();
-        printf("ID: %03X | ", static_cast<unsigned int>(message.id));
-        for (int index = 0; index < message.length; index++)
-            printf("%02X ", message.data[index]);
-        for (int index = message.length; index < 8; index++)
-            printf(".. ");
-        printf("\n");
-    }
+    App::Ui ui({
+        .txPin    = GPIO_NUM_5,
+        .rxPin    = GPIO_NUM_4,
+        .csPin    = GPIO_NUM_15,
+        .resetPin = GPIO_NUM_0,
+        .dcPin    = GPIO_NUM_2,
+        .mosiPin  = GPIO_NUM_23,
+        .sckPin   = GPIO_NUM_18,
+        .ledPin   = GPIO_NUM_22,
+        .misoPin  = GPIO_NUM_19,
+        .tcsPin   = GPIO_NUM_21
+    });
+    ui.mainloop();
 }

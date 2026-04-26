@@ -41,24 +41,45 @@ Drivers::CanBus& Drivers::CanBus::operator=(CanBus&& other) noexcept {
     return *this;
 }
 
-Drivers::CanBus::Message Drivers::CanBus::receive() const {
-    while (true) {
-        twai_message_t message;
-        if (twai_receive(&message, pdMS_TO_TICKS(1000)) != ESP_OK)
-            continue;
+bool Drivers::CanBus::send(const Message& message) const {
+    twai_message_t payload = {
+        .extd = 0,  // 11-bit ID
+        .rtr = 0,   // Not a remote request
+        .ss = 0,    // Not a single shot request
+        .self = 0,  // Not a self-reception request
+        .identifier = message.id,
+        .data_length_code = TWAI_FRAME_MAX_DLC,
+        .data = {}
+    };
+    std::copy(
+        message.data.data(),
+        message.data.data() + message.data.size(),
+        payload.data
+    );
 
-        Message result = {
-            .id = message.identifier,
-            .length = message.data_length_code,
-            .data = {}
-        };
-        std::copy(
-            message.data,
-            message.data + message.data_length_code,
-            result.data
-        );
-        return result;
+    esp_err_t result = twai_transmit(&payload, pdMS_TO_TICKS(100));
+    return result == ESP_OK;
+}
+
+Drivers::CanBus::Message Drivers::CanBus::receive(int retries) const {
+    twai_message_t payload = {};
+    for (int attempt = 0; true; ++attempt) {
+        if (twai_receive(&payload, pdMS_TO_TICKS(1000)) == ESP_OK)
+            break;
+        if (attempt >= retries)
+            return {};
     }
+
+    Message message = {
+        .id = payload.identifier,
+        .data = {}
+    };
+    std::copy(
+        payload.data,
+        payload.data + payload.data_length_code,
+        message.data.data()
+    );
+    return message;
 }
 
 } // namespace evms

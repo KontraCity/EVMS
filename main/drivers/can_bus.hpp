@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <array>
 #include <string>
 
 #include <driver/gpio.h>
@@ -11,10 +12,11 @@ namespace evms {
 namespace Drivers {
     class CanBus {
     public:
+        using Frame = std::array<uint8_t, TWAI_FRAME_MAX_DLC>;
+
         struct Message {
             uint32_t id = 0;
-            uint8_t length = 0;
-            uint8_t data[TWAI_FRAME_MAX_DLC] = {};
+            Frame data = {};
         };
 
     private:
@@ -36,7 +38,9 @@ namespace Drivers {
         CanBus& operator=(CanBus&& other) noexcept;
 
     public:
-        Message receive() const;
+        bool send(const Message& message) const;
+
+        Message receive(int retries = 5) const;
     };
 }
 

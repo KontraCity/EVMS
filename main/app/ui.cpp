@@ -1,6 +1,10 @@
 #include "app/ui.hpp"
 
-#include <cstdio>
+#include <stdio.h>
+
+#include <cstdint>
+#include <vector>
+#include <algorithm>
 #include <array>
 #include <utility>
 
@@ -14,30 +18,85 @@
 
 namespace evms {
 
-App::Ui::Packet App::Ui::ReadPacket() {
-    Utility::InitializeIO();
+static void PrintMessage(const char* comment, const Drivers::CanBus::Message& message) {
+    printf("%s ID: %03X | ", comment, static_cast<unsigned int>(message.id));
+    for (int index = 0; index < message.data.size(); index++)
+        printf("%02X ", message.data[index]);
+    printf("\n");
+}
 
-    bool syncStarted = false;
+static Drivers::CanBus::Message ExpectMessage(const Drivers::CanBus& canBus, uint32_t id) {
     while (true) {
-        uint8_t byte = std::getchar();
-        if (byte == 0xAA) {
-            syncStarted = true;
+        Drivers::CanBus::Message message = canBus.receive();
+        //if (message.id != 0x130)
+            //PrintMessage("<-", message);
+        if (message.id == id)
+            return message;
+    }
+}
+
+static std::vector<uint8_t> Service01Request(const Drivers::CanBus& canBus, const std::vector<uint8_t>& pids) {
+    std::vector<uint8_t> result;
+    int bytesWritten = 0;
+    
+    const int pidsCount = std::min(7, static_cast<int>(pids.size())); // 7 PIDs at max for now.
+    Drivers::CanBus::Message request = {
+        .id = 0x7DF,
+        .data = { static_cast<uint8_t>(pidsCount + 1), 0x01 }
+    };
+    std::copy(pids.data(), pids.data() + pidsCount, request.data.data() + 2);
+
+    canBus.send(request);
+    //PrintMessage("->", request);
+    while (true) {
+        Drivers::CanBus::Message response = ExpectMessage(canBus, 0x7E8);
+
+        // Response is a first frame of multi-frame response?
+        if (response.data[0] == 0x10) {
+            result.resize(response.data[1]);
+            std::copy(
+                response.data.data() + 2,
+                response.data.data() + response.data.size(),
+                result.data()
+            );
+            bytesWritten = response.data.size() - 2;
+            
+            // Tell the car we're ready for next frames
+            request = { 0x7E0, { 0x30 } };
+            canBus.send(request);
+            //PrintMessage("->", request);
             continue;
         }
-        
-        if (syncStarted && byte == 0x55)
-            break;
-        syncStarted = false;
-    }
 
-    std::array<uint8_t, sizeof(Packet)> buffer;
-    for (int index = 0; index < sizeof(Packet); ++index)
-        buffer[index] = std::getchar();
-    return *reinterpret_cast<Packet*>(&buffer);
+        // Response is a next frame of multi-frame response?
+        if (response.data[0] >= 0x21) {
+            int bytesToWrite = std::min(7, static_cast<int>(result.size()) - bytesWritten);
+            std::copy(
+                response.data.data() + 1,
+                response.data.data() + 1 + bytesToWrite,
+                result.data() + bytesWritten
+            );
+            bytesWritten += bytesToWrite;
+
+            if (bytesWritten == result.size())
+                return result;
+            continue;
+        }
+
+        // Response is fully contained in current frame
+        result.resize(response.data[0]);
+        std::copy(
+            response.data.data() + 1,
+            response.data.data() + 1 + response.data[0],
+            result.data()
+        );
+        return result;
+    }
 }
 
 App::Ui::Ui(const Config& config)
     : m_logTag("App")
+    , m_canBus("Car", config.txPin, config.rxPin)
     , m_spiBus("Main", SPI2_HOST, config.sckPin, config.mosiPin, config.misoPin)
     , m_backlight("Backlight", LEDC_CHANNEL_0, config.ledPin)
     , m_screen(m_spiBus, config.csPin, config.resetPin, config.dcPin)
@@ -49,6 +108,7 @@ App::Ui::Ui(const Config& config)
 
 App::Ui::Ui(Ui&& other) noexcept
     : m_logTag(std::move(other.m_logTag))
+    , m_canBus(std::move(other.m_canBus))
     , m_spiBus(std::move(other.m_spiBus))
     , m_backlight(std::move(other.m_backlight))
     , m_screen(std::move(other.m_screen))
@@ -62,6 +122,7 @@ App::Ui::~Ui() {
 App::Ui& App::Ui::operator=(Ui&& other) noexcept {
     if (&other != this) {
         m_logTag = std::move(other.m_logTag);
+        m_canBus = std::move(other.m_canBus);
         m_spiBus = std::move(other.m_spiBus);
         m_backlight = std::move(other.m_backlight);
         m_screen = std::move(other.m_screen);
@@ -152,6 +213,18 @@ void App::Ui::calibrateTouch() {
     });
 }
 
+App::Ui::Packet App::Ui::readPacket() {
+    auto data = Service01Request(m_canBus, { 0x0B, 0x04, 0x0F, 0x42, 0x05 });
+
+    Packet packet = {};
+    packet.manifoldAbsolutePress = data[2] / 100.0f;
+    packet.engineLoad = data[4] / 2.55f;
+    packet.intakeAirTemp = data[6] - 40.0f;
+    packet.batteryVoltage = (256.0f * data[8] + data[9]) / 1000.0f;
+    packet.coolantTemp = data[11] - 40.0f;
+    return packet;
+}
+
 bool App::Ui::applyTouchCalibration(bool overwrite, Display::Touch::Calibration calibration) {
     constexpr const char* StorageNamespace = "Touch";
     constexpr const char* CalibrationFieldName = "calibration";
@@ -179,19 +252,7 @@ void App::Ui::mainloop() {
     Graphics::DrawLabels(m_screen);
     m_screen.render();
 
-    Packet packet = {
-        // Some data simulating a spirited drive
-        .manifoldAbsolutePress  = 1.724f,
-        .fuelFlow               = 11.5f,
-        .oilPressure            = 4.1f,
-        .gear                   = 3,
-        .engineLoad             = 71.4f,
-        .intakeAirTemp          = 46.7f,
-        .batteryVoltage         = 13.8f,
-        .coolantTemp            = 96.2f,
-        .oilTemp                = 108.5f,
-        .gearboxTemp            = 84.1f
-    };
+    Packet packet = {};
     for (int frame = 0; true; ++frame) {
         Graphics::DrawManifoldAbsolutePressGauge(m_screen, packet.manifoldAbsolutePress);
         Graphics::DrawFuelFlowGauge(m_screen, packet.fuelFlow);
@@ -204,7 +265,7 @@ void App::Ui::mainloop() {
         Graphics::DrawOilTempGauge(m_screen, packet.oilTemp);
         Graphics::DrawGearboxTempGauge(m_screen, packet.gearboxTemp);
         m_screen.render();
-        packet = ReadPacket();
+        packet = readPacket();
     }
 }
 

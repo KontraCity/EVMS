@@ -21,7 +21,7 @@ Display::Screen::Screen(const Drivers::SpiBus& spiBus, gpio_num_t csPin, gpio_nu
     // Configure
     command(0x29);                      // Display on
     command(0x3A, { 0b0'101'0'101 });   // Interface pixel format
-    command(0x36, { 0b011'000'00 });    // Memory data access control
+    command(0x36, { 0b101'000'00 });    // Memory data access control
     
     // Clear garbage in GRAM
     clear();
